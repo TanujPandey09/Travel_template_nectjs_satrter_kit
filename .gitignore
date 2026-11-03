@@ -1,0 +1,49 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Next.js & Build Outputs
+/.next/
+/out/
+/build
+/dist
+
+# Environment & Secrets
+.env
+.env*.local
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# TypeScript & Framework
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+
+# Operating System & Editor Files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary & Diagnostic Dumps
+-I
+rendered_localhost.html
+
+# Agent Skills, Instructions & Internal Design Specs (Template Marketplace Cleanup)
+.agent/
+.agents/
+.open-design.json
+DESIGN.md
+design-system/
+

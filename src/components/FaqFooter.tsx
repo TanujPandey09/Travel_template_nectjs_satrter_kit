@@ -1,0 +1,191 @@
+'use client';
+
+import React, { useState } from 'react';
+import {
+  Plus,
+  Minus,
+  Compass,
+  PhoneCall,
+  EnvelopeSimple,
+  MapPin,
+  ArrowRight,
+  WhatsappLogo,
+  Sparkle,
+  CheckCircle,
+} from '@phosphor-icons/react';
+import { FAQ_ITEMS, AGENCY_CONFIG } from '../data/travelData';
+
+interface FaqFooterProps {
+  onOpenPlanner: (defaultContext?: string) => void;
+}
+
+export const FaqFooter: React.FC<FaqFooterProps> = ({ onOpenPlanner }) => {
+  const [openFaqId, setOpenFaqId] = useState<string>(FAQ_ITEMS[0].id);
+
+  return (
+    <footer id="faq" className="pt-12 sm:pt-16 pb-10 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 border-t border-slate-200/80 bg-white w-full">
+      <div className="w-full mx-auto space-y-12 sm:space-y-16">
+        {/* FAQ Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-start">
+          <div className="lg:col-span-5 space-y-4">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100/70 text-[#FF5B37] text-xs font-bold uppercase tracking-wider mb-2">
+              <Sparkle size={14} weight="fill" />
+              <span>Frequently Asked Questions</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              Everything You Need To Know Before You Travel
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Transparent answers regarding per-kilometer billing, hill state union regulations, custom hotel upgrades, and flexible cancellation policies.
+            </p>
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={() => onOpenPlanner('FAQ Consultation')}
+                className="inline-flex items-center gap-2 rounded-full bg-[#FF5B37] hover:bg-[#E64A26] text-white px-6 py-3 text-xs sm:text-sm font-bold tracking-wide shadow-md shadow-[#FF5B37]/25 cursor-pointer transition-all active:scale-95"
+              >
+                <span>Have a Specific Question?</span>
+                <ArrowRight size={15} weight="bold" />
+              </button>
+            </div>
+          </div>
+
+          {/* Clean Accordion */}
+          <div className="lg:col-span-7 divide-y divide-slate-200/80 border-t border-b border-slate-200/80">
+            {FAQ_ITEMS.map((faq) => {
+              const isOpen = openFaqId === faq.id;
+              return (
+                <div key={faq.id} className="py-4">
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaqId(isOpen ? '' : faq.id)}
+                    className="w-full flex items-center justify-between text-left gap-4 py-2 text-base font-bold text-slate-900 hover:text-[#FF5B37] transition-colors cursor-pointer"
+                  >
+                    <span>{faq.question}</span>
+                    <span className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${isOpen ? 'bg-[#FF5B37] text-white' : 'bg-slate-100 text-slate-600'}`}>
+                      {isOpen ? <Minus size={15} weight="bold" /> : <Plus size={15} weight="bold" />}
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="pt-2 pb-3 text-sm text-slate-600 leading-relaxed animate-in fade-in duration-200">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* High-End Framer Travel Footer */}
+        <div className="pt-16 border-t border-slate-200/80 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+          {/* Col 1: Brand Info (2 cols on lg) */}
+          <div className="lg:col-span-2 space-y-4">
+            <div className="flex items-center gap-2.5">
+              <span className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#FF5B37] to-[#FFA07A] text-white flex items-center justify-center shadow-md shadow-[#FF5B37]/30">
+                <Compass size={22} weight="bold" />
+              </span>
+              <span className="text-xl font-extrabold tracking-tight text-slate-900">
+                TRAVELIOO
+              </span>
+            </div>
+            <p className="text-sm text-slate-500 leading-relaxed max-w-sm">
+              India's premier travel agency and luxury commercial fleet provider. Handcrafted tour packages, Maharaja Tempo Travellers, and verified chauffeurs with complete pricing transparency.
+            </p>
+            <div className="pt-2 flex items-center gap-3">
+              <a
+                href={`https://wa.me/${AGENCY_CONFIG.whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 hover:bg-emerald-100 flex items-center justify-center border border-emerald-200 transition-colors cursor-pointer"
+                aria-label="WhatsApp Contact"
+              >
+                <WhatsappLogo size={20} weight="fill" />
+              </a>
+              <a
+                href={`tel:${AGENCY_CONFIG.phoneDisplay.replace(/\s+/g, '')}`}
+                className="w-10 h-10 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Phone Call"
+              >
+                <PhoneCall size={18} weight="bold" />
+              </a>
+              <span className="text-xs font-semibold text-slate-600">
+                24x7 Helpline: {AGENCY_CONFIG.phoneDisplay}
+              </span>
+            </div>
+          </div>
+
+          {/* Col 2: Popular Tour Circuits */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4">
+              Tour Circuits
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-600">
+              <li><a href="#packages" className="hover:text-[#FF5B37] transition-colors">Leh-Ladakh & Pangong</a></li>
+              <li><a href="#packages" className="hover:text-[#FF5B37] transition-colors">Kashmir Valley Paradise</a></li>
+              <li><a href="#packages" className="hover:text-[#FF5B37] transition-colors">Spiti Valley High Passes</a></li>
+              <li><a href="#packages" className="hover:text-[#FF5B37] transition-colors">Rajasthan Royal Forts</a></li>
+              <li><a href="#packages" className="hover:text-[#FF5B37] transition-colors">Kerala Backwaters & Munnar</a></li>
+            </ul>
+          </div>
+
+          {/* Col 3: Fleet Rental */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4">
+              Chauffeur Fleet
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-600">
+              <li><a href="#fleet" className="hover:text-[#FF5B37] transition-colors">Maharaja Tempo 12-Seater</a></li>
+              <li><a href="#fleet" className="hover:text-[#FF5B37] transition-colors">Luxury Tempo 17-Seater</a></li>
+              <li><a href="#fleet" className="hover:text-[#FF5B37] transition-colors">Executive Tempo 26-Seater</a></li>
+              <li><a href="#fleet" className="hover:text-[#FF5B37] transition-colors">Toyota Innova Crysta ZX</a></li>
+              <li><a href="#fleet" className="hover:text-[#FF5B37] transition-colors">Force Urbania Cruiser</a></li>
+            </ul>
+          </div>
+
+          {/* Col 4: Head Office */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4">
+              Registered Office
+            </h4>
+            <div className="space-y-2 text-xs text-slate-600">
+              <p className="flex items-start gap-1.5">
+                <MapPin size={16} weight="fill" className="text-[#FF5B37] shrink-0 mt-0.5" />
+                <span>Connaught Place, Barakhamba Road, New Delhi, 110001</span>
+              </p>
+              <p className="flex items-center gap-1.5 pt-1">
+                <EnvelopeSimple size={16} weight="bold" className="text-[#FF5B37] shrink-0" />
+                <span>concierge@travelioo.com</span>
+              </p>
+              <p className="pt-2 text-[11px] text-slate-400">
+                Ministry of Tourism Lic: DL-TOUR-2024-884
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <p>
+            © {new Date().getFullYear()} Travelioo Tours &amp; Chauffeur Fleet Pvt Ltd. All rights reserved. Developed by{' '}
+            <a
+              href="https://tanujbuildsite.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-slate-700 hover:text-[#FF5B37] underline transition-colors"
+            >
+              Tanujtanujbuildsite
+            </a>
+          </p>
+          <div className="flex items-center gap-6">
+            <a href="#" className="hover:underline">Privacy Policy</a>
+            <a href="#" className="hover:underline">Terms of Service</a>
+            <a href="#" className="hover:underline">AITP Permits</a>
+            <a href="#" className="hover:underline">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
