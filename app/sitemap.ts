@@ -4,7 +4,7 @@ import { BLOG_POSTS } from '@/data/blogData';
 import { TEAM_MEMBERS } from '@/data/teamData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://traveli.in';
+  const baseUrl = 'https://traveli.com';
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {

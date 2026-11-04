@@ -24,6 +24,23 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Traveli Tour & Travels Pvt Ltd' }],
   creator: 'Traveli Journeys',
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/icon.svg',
+  },
+  alternates: {
+    canonical: 'https://traveli.com',
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

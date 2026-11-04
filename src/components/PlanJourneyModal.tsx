@@ -52,6 +52,21 @@ export const PlanJourneyModal: React.FC<PlanJourneyModalProps> = ({
 
     if (Object.keys(nextErrors).length === 0) {
       setSubmitted(true);
+      // Asynchronously log booking lead to backend API
+      fetch('/api/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName,
+          phone,
+          travelDate,
+          paxCount,
+          tripNotes,
+          context: initialContext,
+        }),
+      }).catch(() => {
+        // Non-blocking
+      });
     }
   };
 

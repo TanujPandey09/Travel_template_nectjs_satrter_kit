@@ -106,12 +106,12 @@ export const Footer: React.FC = () => {
           <p>
             © {new Date().getFullYear()} Travelioo Tours &amp; Chauffeur Fleet Pvt Ltd. All rights reserved. Developed by{' '}
             <a
-              href="https://tanujbuildsite.com/"
+              href="https://tanujbuilds.site"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-slate-700 hover:text-[#FF5B37] underline transition-colors"
             >
-              Tanujtanujbuildsite
+              tanujbuildsite
             </a>
           </p>
           <div className="flex items-center gap-6">

@@ -14,7 +14,7 @@ const STEPS: StepItem[] = [
   {
     step: 'Step 01',
     desc: 'Pick your dream travel location from a wide range of beautiful places, curated circuits, and hidden valleys around the world.',
-    titleLine1: 'Choose',
+    titleLine1: 'Select',
     titleLine2: 'destination',
     renderIcon: () => (
       <svg
@@ -45,8 +45,8 @@ const STEPS: StepItem[] = [
   {
     step: 'Step 02',
     desc: 'Select the best travel package that fits your budget and preferences, choose your chauffeur fleet, then confirm.',
-    titleLine1: 'Package',
-    titleLine2: 'reservation',
+    titleLine1: 'Customize',
+    titleLine2: 'itinerary',
     renderIcon: () => (
       <svg
         width="60"
@@ -93,8 +93,8 @@ const STEPS: StepItem[] = [
   {
     step: 'Step 03',
     desc: 'Relax and enjoy your journey while we take care of everything, ensuring a smooth, safe, and unforgettable voyage.',
-    titleLine1: 'Journey',
-    titleLine2: 'enjoyment',
+    titleLine1: 'Embark &',
+    titleLine2: 'experience',
     renderIcon: () => (
       <svg
         width="54"

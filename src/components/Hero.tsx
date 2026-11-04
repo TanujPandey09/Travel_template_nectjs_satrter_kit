@@ -229,7 +229,7 @@ export const Hero: React.FC<HeroProps> = ({
             transition={{ duration: 0.5 }}
             className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm sm:text-[17px]"
           >
-            <span className="text-white/80">4.8 Stars on</span>
+            <span className="text-white/80">4.9 Stars on</span>
             <span className="inline-flex items-center gap-1.5 font-semibold text-white">
               <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
                 <circle cx="12" cy="12" r="12" fill="#34E0A1" />
@@ -240,7 +240,7 @@ export const Hero: React.FC<HeroProps> = ({
               </svg>
               Tripadvisor
             </span>
-            <span className="text-white/80">(586,679 reviews)</span>
+            <span className="text-white/80">(2,480+ reviews)</span>
           </motion.div>
 
           <motion.h1
