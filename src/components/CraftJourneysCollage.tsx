@@ -81,8 +81,23 @@ export const CraftJourneysCollage: React.FC = () => {
     const mm = gsap.matchMedia();
 
     mm.add(
-      '(prefers-reduced-motion: no-preference)',
-      () => {
+      {
+        isDesktop: '(min-width: 768px)',
+        isMobile: '(max-width: 767px)',
+        noReducedMotion: '(prefers-reduced-motion: no-preference)',
+      },
+      (context) => {
+        const { isDesktop, noReducedMotion } = context.conditions as {
+          isDesktop: boolean;
+          isMobile: boolean;
+          noReducedMotion: boolean;
+        };
+
+        if (!noReducedMotion) {
+          CARDS.forEach((c) => gsap.set(`.${c.id}`, { rotate: c.rot, opacity: 1 }));
+          return;
+        }
+
         // 1) Heading + quote reveal
         gsap
           .timeline({
@@ -123,88 +138,101 @@ export const CraftJourneysCollage: React.FC = () => {
           },
         });
 
-        // 2) THE DEAL: the four photos start as one stacked pile in the middle
-        //    and fan out into the collage as you scroll down. Scroll back up
-        //    and they gather into the pile again.
-        const w = (sel: string) =>
-          (document.querySelector<HTMLElement>(sel)?.offsetWidth ?? 350);
+        if (isDesktop) {
+          // 2) DESKTOP ONLY: 4 photos fan out into the collage with scroll scrub
+          const w = (sel: string) =>
+            (document.querySelector<HTMLElement>(sel)?.offsetWidth ?? 350);
 
-        const deal = gsap.timeline({
-          defaults: { ease: 'power2.out' },
-          scrollTrigger: {
-            trigger: '.cc-stage',
-            start: 'top 92%',
-            end: 'top 28%',
-            scrub: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        CARDS.forEach((c, i) => {
-          const sel = `.${c.id}`;
-          const at = i * 0.14;
-          deal.fromTo(
-            sel,
-            {
-              x: () => -c.dx * w(sel),
-              y: () => -c.dy * w(sel) + 40,
-              rotate: c.fromRot,
-              scale: 0.62,
+          const deal = gsap.timeline({
+            defaults: { ease: 'power2.out' },
+            scrollTrigger: {
+              trigger: '.cc-stage',
+              start: 'top 92%',
+              end: 'top 28%',
+              scrub: 1,
+              invalidateOnRefresh: true,
             },
-            { x: 0, y: 0, rotate: c.rot, scale: 1, duration: 1 },
-            at
-          );
-          deal.fromTo(
-            sel,
-            { opacity: 0 },
-            { opacity: 1, duration: 0.25, ease: 'none' },
-            at
-          );
-        });
+          });
 
-        // 3) After they land: each card floats at its own speed (parallax).
-        //    Drift is 0 when the section is centred, so the collage matches
-        //    the reference exactly at that moment.
-        CARDS.forEach((c) => {
-          gsap.fromTo(
-            `.${c.id} .cc-drift`,
-            { yPercent: c.drift },
-            {
-              yPercent: -c.drift,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: 1.2,
+          CARDS.forEach((c, i) => {
+            const sel = `.${c.id}`;
+            const at = i * 0.14;
+            deal.fromTo(
+              sel,
+              {
+                x: () => -c.dx * w(sel),
+                y: () => -c.dy * w(sel) + 40,
+                rotate: c.fromRot,
+                scale: 0.62,
               },
-            }
-          );
+              { x: 0, y: 0, rotate: c.rot, scale: 1, duration: 1 },
+              at
+            );
+            deal.fromTo(
+              sel,
+              { opacity: 0 },
+              { opacity: 1, duration: 0.25, ease: 'none' },
+              at
+            );
+          });
 
-          // 4) Photo slides slowly inside its own frame
-          gsap.fromTo(
-            `.${c.id} .cc-img`,
-            { scale: 1.18, yPercent: -6 },
-            {
-              scale: 1.18,
-              yPercent: 6,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true,
-              },
-            }
-          );
-        });
+          // 3) Photo drift parallax
+          CARDS.forEach((c) => {
+            gsap.fromTo(
+              `.${c.id} .cc-drift`,
+              { yPercent: c.drift },
+              {
+                yPercent: -c.drift,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: sectionRef.current,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: 1.2,
+                },
+              }
+            );
+
+            // 4) Photo slides slowly inside its own frame
+            gsap.fromTo(
+              `.${c.id} .cc-img`,
+              { scale: 1.18, yPercent: -6 },
+              {
+                scale: 1.18,
+                yPercent: 6,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: sectionRef.current,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: true,
+                },
+              }
+            );
+          });
+        } else {
+          // MOBILE: Clean one-shot stagger reveal on mobile cards
+          gsap.from('.cc-mob-card', {
+            opacity: 0,
+            y: 28,
+            scale: 0.94,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.cc-mobile-stage',
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+        }
       },
       sectionRef
     );
 
     // Reduced motion: just show the final collage
     mm.add('(prefers-reduced-motion: reduce)', () => {
-      CARDS.forEach((c) => gsap.set(`.${c.id}`, { rotate: c.rot }));
+      CARDS.forEach((c) => gsap.set(`.${c.id}`, { rotate: c.rot, opacity: 1 }));
     });
 
     return () => mm.revert();
@@ -231,12 +259,12 @@ export const CraftJourneysCollage: React.FC = () => {
           </span>
         </div>
 
-        {/* Collage stage */}
+        {/* Desktop Collage stage (md and above) */}
         <div
-          className="cc-stage relative mx-auto w-full"
+          className="cc-stage relative mx-auto w-full hidden md:block"
           style={
             {
-              ['--w' as string]: 'clamp(88px, 21.9vw, 350px)',
+              ['--w' as string]: 'clamp(200px, 21.9vw, 350px)',
               height: 'calc(var(--w) * 1.5)',
             } as React.CSSProperties
           }
@@ -267,6 +295,33 @@ export const CraftJourneysCollage: React.FC = () => {
                     className="cc-img h-full w-full object-cover will-change-transform"
                   />
                 </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile Collage Stage (< md): Large, crisp photos in asymmetric 2x2 presentation */}
+        <div className="md:hidden grid grid-cols-2 gap-3.5 max-w-sm mx-auto my-6 px-1 cc-mobile-stage">
+          {CARDS.map((c, i) => (
+            <div
+              key={`mob-${c.id}`}
+              className="cc-mob-card relative aspect-[3/4] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-slate-100"
+              style={{
+                transform: `rotate(${i === 0 ? '-3deg' : i === 1 ? '3deg' : i === 2 ? '2deg' : '-2.5deg'})`,
+              }}
+            >
+              <img
+                src={c.src}
+                alt={c.alt}
+                loading="lazy"
+                draggable={false}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white">
+                <span className="text-[11px] font-bold block leading-tight drop-shadow-sm">
+                  {c.alt.split(' ').slice(0, 3).join(' ')}
+                </span>
               </div>
             </div>
           ))}

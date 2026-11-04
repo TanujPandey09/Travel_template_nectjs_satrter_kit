@@ -110,18 +110,32 @@ export const Hero: React.FC<HeroProps> = ({
   const [travelerCount, setTravelerCount] = useState('01 person');
 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   // Slides whose video failed to load -> fall back to poster image
   const [failed, setFailed] = useState<Record<string, boolean>>({});
 
   const heroRef = useRef<HTMLElement>(null);
   const heroBgRef = useRef<HTMLDivElement>(null);
 
-  // GSAP parallax scrub
+  // Screen size check for mobile asset optimization
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile, { passive: true });
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // GSAP parallax scrub (desktop only to preserve 120Hz mobile momentum scroll)
   useEffect(() => {
     if (typeof window === 'undefined') return;
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 768px)', () => {
       if (heroBgRef.current && heroRef.current) {
         gsap.to(heroBgRef.current, {
           yPercent: 10,
@@ -135,9 +149,9 @@ export const Hero: React.FC<HeroProps> = ({
           },
         });
       }
-    }, heroRef);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   // Background slide auto-advance
@@ -163,7 +177,7 @@ export const Hero: React.FC<HeroProps> = ({
     <section
       ref={heroRef}
       // `isolate` makes the -z-10 background paint ABOVE bg-slate-950
-      className="relative isolate flex h-[92vh] max-h-[960px] min-h-[680px] w-full items-end justify-center overflow-hidden bg-slate-950 select-none lg:min-h-[720px]"
+      className="relative isolate flex min-h-[100svh] lg:h-[92vh] lg:max-h-[960px] lg:min-h-[720px] w-full items-end justify-center overflow-hidden bg-slate-950 select-none"
     >
       {/* Background carousel with parallax */}
       <div
@@ -172,7 +186,8 @@ export const Hero: React.FC<HeroProps> = ({
       >
         {HERO_SLIDES.map((slide, idx) => {
           const isActive = idx === activeSlideIndex;
-          const showVideo = slide.type === 'video' && !failed[slide.id];
+          // On mobile, use lightweight poster images to prevent cellular bandwidth & GPU video decoder drain
+          const showVideo = !isMobile && slide.type === 'video' && !failed[slide.id];
 
           return (
             <div
@@ -220,7 +235,7 @@ export const Hero: React.FC<HeroProps> = ({
       </div>
 
       {/* Content: pinned to the bottom, heading left, form right */}
-      <div className="relative z-20 grid w-full grid-cols-1 items-end gap-8 sm:gap-10 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-20 pb-10 sm:pb-14 pt-24 sm:pt-28 max-w-7xl mx-auto lg:grid-cols-12">
+      <div className="relative z-20 grid w-full grid-cols-1 items-end gap-8 sm:gap-10 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-20 pb-10 sm:pb-14 pt-28 sm:pt-32 lg:pt-24 max-w-7xl mx-auto lg:grid-cols-12">
         {/* Left: rating + headline */}
         <div className="text-left lg:col-span-7">
           <motion.div
@@ -264,7 +279,7 @@ export const Hero: React.FC<HeroProps> = ({
             initial={{ opacity: 0, scale: 0.97, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="w-full max-w-[498px] rounded-[20px] border border-white/25 bg-gradient-to-b from-white/[0.17] to-white/[0.07] px-5 pb-5 pt-6 shadow-[0_20px_50px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:px-[29px] sm:pb-[29px] sm:pt-[33px]"
+            className="w-full max-w-[498px] rounded-[20px] border border-white/20 bg-slate-950/75 sm:bg-gradient-to-b sm:from-white/[0.17] sm:to-white/[0.07] px-5 pb-5 pt-6 shadow-[0_20px_50px_rgba(0,0,0,0.35)] backdrop-blur-md sm:backdrop-blur-xl sm:px-[29px] sm:pb-[29px] sm:pt-[33px]"
           >
             <form onSubmit={handleSearchSubmit}>
               {/* Row 1 */}
@@ -293,7 +308,8 @@ export const Hero: React.FC<HeroProps> = ({
                       <Select.Content
                         position="popper"
                         sideOffset={8}
-                        className="z-50 min-w-[240px] max-w-[320px] max-h-[360px] overflow-auto rounded-2xl border border-white/20 bg-slate-950/95 p-1.5 text-white shadow-2xl backdrop-blur-2xl ring-1 ring-black/50"
+                        collisionPadding={12}
+                        className="z-50 min-w-[220px] max-w-[320px] max-h-[360px] overflow-auto rounded-2xl border border-white/20 bg-slate-950/95 p-1.5 text-white shadow-2xl backdrop-blur-2xl ring-1 ring-black/50"
                       >
                         <Select.Viewport className="p-1 space-y-0.5">
                           {DESTINATION_OPTIONS.map((dest) => (
@@ -377,7 +393,8 @@ export const Hero: React.FC<HeroProps> = ({
                       <Select.Content
                         position="popper"
                         sideOffset={8}
-                        className="z-50 min-w-[220px] max-w-[280px] overflow-auto rounded-2xl border border-white/20 bg-slate-950/95 p-1.5 text-white shadow-2xl backdrop-blur-2xl ring-1 ring-black/50"
+                        collisionPadding={12}
+                        className="z-50 min-w-[200px] max-w-[280px] overflow-auto rounded-2xl border border-white/20 bg-slate-950/95 p-1.5 text-white shadow-2xl backdrop-blur-2xl ring-1 ring-black/50"
                       >
                         <Select.Viewport className="p-1 space-y-0.5">
                           {TRAVELER_OPTIONS.map((item) => (
@@ -408,10 +425,10 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
               </div>
 
-              {/* Action (compact, left aligned, like the reference) */}
+              {/* Action (full-width on mobile for thumb ergonomics, compact on desktop) */}
               <button
                 type="submit"
-                className="mt-6 inline-flex h-[52px] cursor-pointer items-center justify-center gap-3 rounded-xl bg-white px-5 text-base font-medium text-slate-900 shadow-[0_8px_24px_rgba(0,0,0,0.18)] transition-all hover:bg-slate-100 active:scale-[0.97] sm:mt-[34px] sm:h-[57px] sm:text-[18px]"
+                className="mt-6 inline-flex h-[52px] w-full sm:w-auto cursor-pointer items-center justify-center gap-3 rounded-xl bg-white px-6 text-base font-semibold text-slate-900 shadow-[0_8px_24px_rgba(0,0,0,0.18)] transition-all hover:bg-slate-100 active:scale-[0.97] sm:mt-[34px] sm:h-[57px] sm:text-[18px]"
               >
                 <Compass size={24} weight="regular" />
                 <span>Explore Now</span>

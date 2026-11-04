@@ -207,7 +207,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         <Popover.Content
           align="start"
           sideOffset={8}
-          className="z-50 w-[304px] select-none rounded-2xl border border-white/20 bg-slate-950/95 p-4 text-white shadow-2xl backdrop-blur-2xl ring-1 ring-black/50"
+          collisionPadding={12}
+          className="z-50 w-[296px] sm:w-[304px] select-none rounded-2xl border border-white/20 bg-slate-950/95 p-3.5 sm:p-4 text-white shadow-2xl backdrop-blur-2xl ring-1 ring-black/50"
         >
           {/* Header Month / Year & Prev/Next Nav */}
           <div className="flex items-center justify-between pb-3 border-b border-white/10">

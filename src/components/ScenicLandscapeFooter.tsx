@@ -25,7 +25,7 @@ export const ScenicLandscapeFooter: React.FC = () => {
 
       {/* Floating Glassmorphic Footer Card matching Framer screenshot 1:1 */}
       <div className="w-full max-w-7xl px-4 sm:px-6 md:px-10 lg:px-14 xl:px-20 mx-auto z-10 mb-8">
-        <div className="rounded-3xl sm:rounded-[36px] bg-slate-950/65 backdrop-blur-xl border border-white/20 p-6 sm:p-10 lg:p-12 text-white shadow-2xl">
+        <div className="rounded-3xl sm:rounded-[36px] bg-slate-950/85 sm:bg-slate-950/65 backdrop-blur-md sm:backdrop-blur-xl border border-white/20 p-6 sm:p-10 lg:p-12 text-white shadow-2xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 items-start">
             {/* Brand & Contact Info */}
             <div className="lg:col-span-5 space-y-5">

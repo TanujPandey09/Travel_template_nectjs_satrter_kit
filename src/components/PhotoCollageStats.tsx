@@ -59,96 +59,145 @@ export const PhotoCollageStats: React.FC<PhotoCollageStatsProps> = ({ onOpenPlan
     gsap.registerPlugin(ScrollTrigger);
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mm = gsap.matchMedia();
 
-    const ctx = gsap.context(() => {
-      if (reduceMotion) {
-        CARDS_DATA.forEach((card) => {
-          gsap.set(`.${card.id}`, { rotate: card.rotate, opacity: 1 });
-        });
-        gsap.set('.pcs-medallion', { scale: 1, opacity: 1, rotate: -6 });
-        return;
-      }
+    mm.add(
+      {
+        isDesktop: '(min-width: 768px)',
+        isMobile: '(max-width: 767px)',
+      },
+      (context) => {
+        const { isDesktop } = context.conditions as { isDesktop: boolean };
 
-      // 1. Scrubbed Flight Animation on Cards (like CtaBanner)
-      // As user scrolls down, photos fly into their fanned position from outside;
-      // when scrolling back up, they smoothly retreat.
-      const tl = gsap.timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 85%',
-          end: 'top 25%',
-          scrub: 0.8,
-        },
-      });
+        if (reduceMotion) {
+          CARDS_DATA.forEach((card) => {
+            gsap.set(`.${card.id}`, { rotate: card.rotate, opacity: 1 });
+          });
+          gsap.set('.pcs-medallion', { scale: 1, opacity: 1, rotate: -6 });
+          return;
+        }
 
-      // Fly in each of the 3 photographic cards
-      CARDS_DATA.forEach((card) => {
-        tl.fromTo(
-          `.${card.id}`,
-          {
-            x: card.fromX,
-            y: card.fromY,
-            rotate: card.fromRotate,
-            scale: 0.65,
-            opacity: 0,
-          },
-          {
-            x: 0,
-            y: 0,
-            rotate: card.rotate,
-            scale: 1,
-            opacity: 1,
-          },
-          0
-        );
-      });
-
-      // Central Medallion pops in
-      tl.fromTo(
-        '.pcs-medallion',
-        { scale: 0, rotate: 60, opacity: 0 },
-        { scale: 1, rotate: -6, opacity: 1, duration: 0.6 },
-        0.3
-      );
-
-      // 2. Parallax drift on the images inside the cards
-      gsap.utils.toArray<HTMLElement>('.pcs-img').forEach((img) => {
-        gsap.fromTo(
-          img,
-          { yPercent: -8, scale: 1.12 },
-          {
-            yPercent: 8,
-            scale: 1.12,
-            ease: 'none',
+        if (isDesktop) {
+          // 1. Scrubbed Flight Animation on Cards (Desktop only)
+          const tl = gsap.timeline({
+            defaults: { ease: 'none' },
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1.2,
+              start: 'top 85%',
+              end: 'top 25%',
+              scrub: 0.8,
             },
-          }
-        );
-      });
+          });
 
-      // 3. Staggered reveal for left text elements
-      if (leftColRef.current) {
-        gsap.from(leftColRef.current.children, {
-          y: 35,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: leftColRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        });
-      }
-    }, sectionRef);
+          // Fly in each of the 3 photographic cards
+          CARDS_DATA.forEach((card) => {
+            tl.fromTo(
+              `.${card.id}`,
+              {
+                x: card.fromX,
+                y: card.fromY,
+                rotate: card.fromRotate,
+                scale: 0.65,
+                opacity: 0,
+              },
+              {
+                x: 0,
+                y: 0,
+                rotate: card.rotate,
+                scale: 1,
+                opacity: 1,
+              },
+              0
+            );
+          });
 
-    return () => ctx.revert();
+          // Central Medallion pops in
+          tl.fromTo(
+            '.pcs-medallion',
+            { scale: 0, rotate: 60, opacity: 0 },
+            { scale: 1, rotate: -6, opacity: 1, duration: 0.6 },
+            0.3
+          );
+
+          // 2. Parallax drift on the images inside the cards
+          gsap.utils.toArray<HTMLElement>('.pcs-img').forEach((img) => {
+            gsap.fromTo(
+              img,
+              { yPercent: -8, scale: 1.12 },
+              {
+                yPercent: 8,
+                scale: 1.12,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: sectionRef.current,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: 1.2,
+                },
+              }
+            );
+          });
+        } else {
+          // Mobile: clean entrance stagger without continuous scroll scrubbing
+          CARDS_DATA.forEach((card, idx) => {
+            gsap.fromTo(
+              `.${card.id}`,
+              { opacity: 0, y: 25, scale: 0.95 },
+              {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotate: card.rotate,
+                duration: 0.6,
+                delay: idx * 0.1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: sectionRef.current,
+                  start: 'top 85%',
+                  toggleActions: 'play none none reverse',
+                },
+              }
+            );
+          });
+          gsap.fromTo(
+            '.pcs-medallion',
+            { scale: 0, opacity: 0 },
+            {
+              scale: 1,
+              opacity: 1,
+              rotate: -6,
+              duration: 0.5,
+              delay: 0.3,
+              ease: 'back.out(1.7)',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+        }
+
+        // Staggered reveal for left text elements
+        if (leftColRef.current) {
+          gsap.from(leftColRef.current.children, {
+            y: 35,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.12,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: leftColRef.current,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+        }
+      },
+      sectionRef
+    );
+
+    return () => mm.revert();
   }, []);
 
   return (

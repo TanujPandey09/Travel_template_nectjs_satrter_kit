@@ -52,7 +52,17 @@ export const WaterSplashCanvas: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    if (typeof window === 'undefined') return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Disable heavy canvas ripple calculations on mobile touch devices
+    const isTouchOrSmallScreen =
+      window.innerWidth < 768 ||
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia('(pointer: coarse)').matches;
+
+    if (isTouchOrSmallScreen) return;
 
     // Clicks are listened for on the whole hero section
     const host = (canvas.closest('section') as HTMLElement | null) ?? bg;
@@ -157,7 +167,7 @@ export const WaterSplashCanvas: React.FC = () => {
     };
 
     const onPointerDown = (e: PointerEvent) => {
-      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
       const target = e.target as HTMLElement;
       if (
         target.closest(

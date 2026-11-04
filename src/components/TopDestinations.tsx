@@ -95,8 +95,17 @@ export const TopDestinations: React.FC<TopDestinationsProps> = ({
 }) => {
   const [activeLocation, setActiveLocation] = useState('All');
   const [mediaFilter, setMediaFilter] = useState<'all' | 'video' | 'image'>('all');
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile, { passive: true });
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -228,7 +237,7 @@ export const TopDestinations: React.FC<TopDestinationsProps> = ({
             >
               {/* Media Container: Photos & Videos with Exact Same Height */}
               <div className="relative h-[250px] sm:h-[280px] md:h-[310px] w-full rounded-3xl overflow-hidden bg-slate-900 shadow-xs group-hover:shadow-xl transition-all duration-300">
-                {item.video ? (
+                {!isMobile && item.video ? (
                   <video
                     autoPlay
                     muted

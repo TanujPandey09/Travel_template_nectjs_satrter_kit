@@ -19,42 +19,54 @@ export const ExperienceInMotion: React.FC = () => {
     if (typeof window === 'undefined') return;
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
-      if (mediaImgRef.current && sectionRef.current) {
-        gsap.fromTo(
-          mediaImgRef.current,
-          { yPercent: -6, scale: 1.08 },
-          {
-            yPercent: 6,
-            scale: 1,
-            ease: 'none',
+    const mm = gsap.matchMedia();
+
+    mm.add(
+      {
+        isDesktop: '(min-width: 768px)',
+        isMobile: '(max-width: 767px)',
+      },
+      (context) => {
+        const { isDesktop } = context.conditions as { isDesktop: boolean };
+
+        if (isDesktop && mediaImgRef.current && sectionRef.current) {
+          gsap.fromTo(
+            mediaImgRef.current,
+            { yPercent: -6, scale: 1.08 },
+            {
+              yPercent: 6,
+              scale: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1.2,
+              },
+            }
+          );
+        }
+
+        const rows = featuresRef.current?.querySelectorAll('.feature-row');
+        if (rows) {
+          gsap.from(rows, {
+            x: 25,
+            opacity: 0,
+            stagger: 0.1,
+            duration: 0.6,
+            ease: 'power3.out',
             scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1.2,
+              trigger: featuresRef.current,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
             },
-          }
-        );
-      }
+          });
+        }
+      },
+      sectionRef
+    );
 
-      const rows = featuresRef.current?.querySelectorAll('.feature-row');
-      if (rows) {
-        gsap.from(rows, {
-          x: 25,
-          opacity: 0,
-          stagger: 0.12,
-          duration: 0.6,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: featuresRef.current,
-            start: 'top 80%',
-          },
-        });
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (

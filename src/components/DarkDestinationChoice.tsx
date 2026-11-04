@@ -88,6 +88,15 @@ export const DarkDestinationChoice: React.FC<DarkDestinationChoiceProps> = ({
   const [activeIndex, setActiveIndex] = useState(0);
   const [videoReady, setVideoReady] = useState(false);
   const [videoFailed, setVideoFailed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile, { passive: true });
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Shared flags read by the animation loop
   const hoverRef = useRef(false);
@@ -348,7 +357,7 @@ export const DarkDestinationChoice: React.FC<DarkDestinationChoiceProps> = ({
           className="absolute inset-0 h-full w-full object-cover filter brightness-[0.32] contrast-[1.12]"
         />
 
-        {!videoFailed && (
+        {!isMobile && !videoFailed && (
           <video
             src={BG_VIDEO}
             poster={BG_POSTER}
@@ -356,10 +365,10 @@ export const DarkDestinationChoice: React.FC<DarkDestinationChoiceProps> = ({
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             onCanPlay={() => setVideoReady(true)}
             onError={() => setVideoFailed(true)}
-            className={`absolute inset-0 h-full w-full object-cover filter brightness-[1] contrast-[1.2] transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'
               }`}
           />
         )}

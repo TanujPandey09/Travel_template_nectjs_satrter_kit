@@ -41,7 +41,9 @@ export const EditorialHighlights: React.FC = () => {
     if (typeof window === 'undefined') return;
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 768px)', () => {
       const imgs = gridRef.current?.querySelectorAll('.highlight-img');
       if (imgs) {
         imgs.forEach((img) => {
@@ -62,9 +64,9 @@ export const EditorialHighlights: React.FC = () => {
           );
         });
       }
-    }, sectionRef);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (

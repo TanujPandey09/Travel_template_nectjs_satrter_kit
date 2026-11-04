@@ -17,15 +17,31 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Initialize Lenis Smooth Scrolling
+    if (typeof window === 'undefined') return;
+
+    // Detect mobile touch devices (iOS Safari, Android Chrome, mobile viewports)
+    const isTouchOrMobile =
+      window.innerWidth < 768 ||
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia('(pointer: coarse)').matches;
+
+    // On mobile devices, native 120Hz momentum scrolling provides the fastest,
+    // jitter-free experience without fighting touch event loops or GPU composite threads.
+    if (isTouchOrMobile) {
+      return;
+    }
+
+    // Initialize Lenis Smooth Scrolling for desktop mouse wheel
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth exponential ease
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.9,
-      touchMultiplier: 1.8,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.0,
+      syncTouch: false,
     });
 
     lenisRef.current = lenis;
@@ -39,7 +55,8 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
     };
 
     gsap.ticker.add(updateRaf);
-    gsap.ticker.lagSmoothing(0);
+    // Allow standard lag smoothing so dropped frames don't queue up and cause freezes
+    gsap.ticker.lagSmoothing(500, 33);
 
     return () => {
       lenis.destroy();

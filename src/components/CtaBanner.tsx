@@ -75,98 +75,160 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
-    const ctx = gsap.context(() => {
-      // Final resting rotations of the three photos
-      const cards = [
-        { sel: '.cta-card-top', rotate: 14, fromX: 160, fromY: -140, fromRotate: 40 },
-        { sel: '.cta-card-right', rotate: -14, fromX: 260, fromY: -60, fromRotate: -45 },
-        { sel: '.cta-card-bottom', rotate: -10, fromX: 140, fromY: 200, fromRotate: -35 },
-      ];
+    const cards = [
+      { sel: '.cta-card-top', rotate: 14, fromX: 160, fromY: -140, fromRotate: 40 },
+      { sel: '.cta-card-right', rotate: -14, fromX: 260, fromY: -60, fromRotate: -45 },
+      { sel: '.cta-card-bottom', rotate: -10, fromX: 140, fromY: 200, fromRotate: -35 },
+    ];
 
-      if (reduceMotion) {
-        cards.forEach((c) => gsap.set(c.sel, { rotate: c.rotate }));
-        return;
-      }
+    const mm = gsap.matchMedia();
 
-      // Background parallax
-      if (bgImgRef.current && bannerRef.current) {
-        gsap.fromTo(
-          bgImgRef.current,
-          { yPercent: -8, scale: 1.1 },
-          {
-            yPercent: 8,
-            scale: 1,
-            ease: 'none',
+    mm.add(
+      {
+        isDesktop: '(min-width: 768px)',
+        isMobile: '(max-width: 767px)',
+      },
+      (context) => {
+        const { isDesktop } = context.conditions as { isDesktop: boolean };
+
+        if (reduceMotion) {
+          cards.forEach((c) => gsap.set(c.sel, { rotate: c.rotate }));
+          return;
+        }
+
+        if (isDesktop) {
+          // Background parallax (Desktop only)
+          if (bgImgRef.current && bannerRef.current) {
+            gsap.fromTo(
+              bgImgRef.current,
+              { yPercent: -8, scale: 1.1 },
+              {
+                yPercent: 8,
+                scale: 1,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: bannerRef.current,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: 1.2,
+                },
+              }
+            );
+          }
+
+          // Scrubbed timeline: scroll DOWN -> photos fly in
+          const tl = gsap.timeline({
+            defaults: { ease: 'none' },
             scrollTrigger: {
               trigger: bannerRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1.2,
+              start: 'top 90%',
+              end: 'top 25%',
+              scrub: 0.8,
             },
-          }
-        );
-      }
+          });
 
-      // Scrubbed timeline: scroll DOWN -> photos fly in,
-      // scroll UP -> the same motion plays in reverse and they leave.
-      const tl = gsap.timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: {
-          trigger: bannerRef.current,
-          start: 'top 90%',
-          end: 'top 25%',
-          scrub: 0.8,
-        },
-      });
+          cards.forEach((c, i) => {
+            tl.fromTo(
+              c.sel,
+              {
+                x: c.fromX,
+                y: c.fromY,
+                rotate: c.fromRotate,
+                scale: 0.7,
+                opacity: 0,
+              },
+              {
+                x: 0,
+                y: 0,
+                rotate: c.rotate,
+                scale: 1,
+                opacity: 1,
+                duration: 1,
+              },
+              i * 0.25
+            );
+          });
 
-      cards.forEach((c, i) => {
-        tl.fromTo(
-          c.sel,
-          {
-            x: c.fromX,
-            y: c.fromY,
-            rotate: c.fromRotate,
-            scale: 0.7,
+          // Sale badge pops in last
+          tl.fromTo(
+            '.cta-badge',
+            { scale: 0, rotate: -90, opacity: 0 },
+            { scale: 1, rotate: 0, opacity: 1, duration: 0.6 },
+            0.9
+          );
+
+          // Left text slides in slightly
+          tl.fromTo(
+            '.cta-text',
+            { x: -60, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.8 },
+            0
+          );
+
+          // Floating pill badge
+          tl.fromTo(
+            '.cta-pill',
+            { y: 20, opacity: 0, rotate: -25 },
+            { y: 0, opacity: 1, rotate: -12, duration: 0.5 },
+            0.5
+          );
+        } else {
+          // Mobile: clean entrance stagger without continuous scroll scrubbing
+          cards.forEach((c, idx) => {
+            gsap.fromTo(
+              c.sel,
+              { opacity: 0, y: 25 },
+              {
+                opacity: 1,
+                y: 0,
+                rotate: c.rotate,
+                duration: 0.5,
+                delay: idx * 0.1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: bannerRef.current,
+                  start: 'top 85%',
+                  toggleActions: 'play none none reverse',
+                },
+              }
+            );
+          });
+
+          gsap.fromTo(
+            '.cta-badge',
+            { scale: 0, opacity: 0 },
+            {
+              scale: 1,
+              opacity: 1,
+              rotate: 0,
+              duration: 0.5,
+              delay: 0.3,
+              ease: 'back.out(1.7)',
+              scrollTrigger: {
+                trigger: bannerRef.current,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+
+          gsap.from('.cta-text', {
+            y: 25,
             opacity: 0,
-          },
-          {
-            x: 0,
-            y: 0,
-            rotate: c.rotate,
-            scale: 1,
-            opacity: 1,
-            duration: 1,
-          },
-          i * 0.25
-        );
-      });
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: bannerRef.current,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+        }
+      },
+      bannerRef
+    );
 
-      // Sale badge pops in last
-      tl.fromTo(
-        '.cta-badge',
-        { scale: 0, rotate: -90, opacity: 0 },
-        { scale: 1, rotate: 0, opacity: 1, duration: 0.6 },
-        0.9
-      );
-
-      // Left text slides in slightly
-      tl.fromTo(
-        '.cta-text',
-        { x: -60, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.8 },
-        0
-      );
-
-      // Floating pill badge
-      tl.fromTo(
-        '.cta-pill',
-        { y: 20, opacity: 0, rotate: -25 },
-        { y: 0, opacity: 1, rotate: -12, duration: 0.5 },
-        0.5
-      );
-    }, bannerRef);
-
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   const handleClick = () => {

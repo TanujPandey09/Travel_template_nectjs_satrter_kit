@@ -103,28 +103,91 @@ export const ReviewsAndStats: React.FC = () => {
             '-=0.4'
           );
 
-        // 2) Parallax settle: cards start at different heights (up/down) and
-        //    drift at different speeds while scrolling. By the time the grid
-        //    reaches the upper part of the screen they all land on the SAME
-        //    line and stay there.
-        const offsets = isDesktop ? [110, 190, 140] : [40, 60, 40];
-        const tl = gsap.timeline({
-          defaults: { ease: 'none' },
-          scrollTrigger: {
-            trigger: '.rev-grid',
-            start: 'top 105%',
-            end: 'top 40%',
-            scrub: 1,
-          },
-        });
-        ['.rev-card-stat', '.rev-card-1', '.rev-card-2'].forEach((sel, i) => {
-          tl.fromTo(
-            sel,
-            { y: offsets[i], opacity: 0 },
-            { y: 0, opacity: 1, duration: 1 },
-            0
+        // 2) Parallax settle: only scrub on desktop!
+        if (isDesktop) {
+          const offsets = [110, 190, 140];
+          const tl = gsap.timeline({
+            defaults: { ease: 'none' },
+            scrollTrigger: {
+              trigger: '.rev-grid',
+              start: 'top 105%',
+              end: 'top 40%',
+              scrub: 1,
+            },
+          });
+          ['.rev-card-stat', '.rev-card-1', '.rev-card-2'].forEach((sel, i) => {
+            tl.fromTo(
+              sel,
+              { y: offsets[i], opacity: 0 },
+              { y: 0, opacity: 1, duration: 1 },
+              0
+            );
+          });
+
+          // 5) Medallion: keeps turning and drifting through the whole section
+          gsap.fromTo(
+            '.rev-medallion',
+            { rotate: -14, y: 14 },
+            {
+              rotate: 14,
+              y: -14,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1.2,
+              },
+            }
           );
-        });
+          gsap.fromTo(
+            '.rev-medallion-img',
+            { scale: 1.25 },
+            {
+              scale: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1.2,
+              },
+            }
+          );
+
+          // 6) Banner photos inside the author strips drift slowly (inner parallax)
+          gsap.utils.toArray<HTMLElement>('.banner-img').forEach((img) => {
+            gsap.fromTo(
+              img,
+              { yPercent: -14 },
+              {
+                yPercent: 14,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: img,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: true,
+                },
+              }
+            );
+          });
+        } else {
+          // Mobile: clean entrance animation, no continuous scroll scrubbing
+          gsap.from('.rev-grid > *', {
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.rev-grid',
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+          gsap.set('.rev-medallion', { rotate: 0, y: 0 });
+        }
 
         // 3) Stat card: number counts up, stars pop one by one
         const counter = { val: 0 };
@@ -175,55 +238,6 @@ export const ReviewsAndStats: React.FC = () => {
               toggleActions: 'play none none reverse',
             },
           });
-        });
-
-        // 5) Medallion: keeps turning and drifting through the whole section
-        gsap.fromTo(
-          '.rev-medallion',
-          { rotate: -14, y: 14 },
-          {
-            rotate: 14,
-            y: -14,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1.2,
-            },
-          }
-        );
-        gsap.fromTo(
-          '.rev-medallion-img',
-          { scale: 1.25 },
-          {
-            scale: 1,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1.2,
-            },
-          }
-        );
-
-        // 6) Banner photos inside the author strips drift slowly (inner parallax)
-        gsap.utils.toArray<HTMLElement>('.banner-img').forEach((img) => {
-          gsap.fromTo(
-            img,
-            { yPercent: -14 },
-            {
-              yPercent: 14,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: img,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true,
-              },
-            }
-          );
         });
       },
       sectionRef
