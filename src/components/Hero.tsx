@@ -279,8 +279,19 @@ export const Hero: React.FC<HeroProps> = ({
             initial={{ opacity: 0, scale: 0.97, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="w-full max-w-[498px] rounded-[20px] border border-white/20 bg-slate-950/75 sm:bg-gradient-to-b sm:from-white/[0.17] sm:to-white/[0.07] px-5 pb-5 pt-6 shadow-[0_20px_50px_rgba(0,0,0,0.35)] backdrop-blur-md sm:backdrop-blur-xl sm:px-[29px] sm:pb-[29px] sm:pt-[33px]"
+            className="w-full max-w-[498px] rounded-[24px] border border-white/20 bg-slate-950/80 sm:bg-gradient-to-b sm:from-white/[0.18] sm:to-white/[0.08] px-5 pb-5 pt-6 shadow-[0_24px_60px_rgba(0,0,0,0.5)] backdrop-blur-md sm:backdrop-blur-2xl sm:px-[29px] sm:pb-[29px] sm:pt-[30px]"
           >
+            {/* Top Micro-Status Badge */}
+            <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-white/10 text-[11px]">
+              <div className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-white">
+                <span className="w-2 h-2 rounded-full bg-[#34E0A1] animate-pulse" />
+                <span>2026 Season Fleet Open</span>
+              </div>
+              <span className="text-[10px] text-white/60 font-semibold tracking-wide">
+                Instant Confirmation
+              </span>
+            </div>
+
             <form onSubmit={handleSearchSubmit}>
               {/* Row 1 */}
               <div className="grid grid-cols-2 gap-[13px]">
@@ -425,14 +436,19 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
               </div>
 
-              {/* Action (full-width on mobile for thumb ergonomics, compact on desktop) */}
-              <button
-                type="submit"
-                className="mt-6 inline-flex h-[52px] w-full sm:w-auto cursor-pointer items-center justify-center gap-3 rounded-xl bg-white px-6 text-base font-semibold text-slate-900 shadow-[0_8px_24px_rgba(0,0,0,0.18)] transition-all hover:bg-slate-100 active:scale-[0.97] sm:mt-[34px] sm:h-[57px] sm:text-[18px]"
-              >
-                <Compass size={24} weight="regular" />
-                <span>Explore Now</span>
-              </button>
+              {/* Action Bar (Glowing High-Converting Luxury CTA) */}
+              <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-3 border-t border-white/10">
+                <button
+                  type="submit"
+                  className="inline-flex h-[52px] sm:h-[56px] w-full sm:w-auto cursor-pointer items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-[#FF5B37] to-[#FFA07A] hover:from-[#E64A26] hover:to-[#FF8C66] px-7 text-sm sm:text-base font-bold text-white shadow-[0_10px_28px_rgba(255,91,55,0.4)] transition-all duration-200 active:scale-[0.98] group"
+                >
+                  <Compass size={20} weight="bold" className="group-hover:rotate-45 transition-transform duration-300" />
+                  <span>Explore Circuits</span>
+                </button>
+                <span className="text-[11px] text-white/60 text-center sm:text-right font-medium">
+                  ✓ Best Tariff Guarantee
+                </span>
+              </div>
             </form>
           </motion.div>
         </div>

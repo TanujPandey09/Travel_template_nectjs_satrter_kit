@@ -244,8 +244,13 @@ export const CraftJourneysCollage: React.FC = () => {
       className="w-full select-none overflow-hidden bg-white px-4 sm:px-6 md:px-10 lg:px-14 xl:px-20 py-14 sm:py-20 md:py-24"
     >
       <div className="mx-auto w-full max-w-7xl">
-        {/* Heading with tilted pill */}
-        <div className="cc-head relative mx-auto mb-10 max-w-3xl text-center sm:mb-14">
+        {/* Heading with responsive tilted pill */}
+        <div className="cc-head relative mx-auto mb-10 max-w-3xl text-center sm:mb-14 flex flex-col items-center">
+          {/* Mobile centered badge */}
+          <div className="sm:hidden mb-3 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-50 border border-slate-200/90 text-xs font-bold text-slate-700 shadow-2xs -rotate-2">
+            <span>Our Heritage</span>
+          </div>
+
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-slate-900">
             <span className="block overflow-hidden pb-1">
               <span className="cc-line block">We don&apos;t sell trips. We</span>
@@ -254,8 +259,10 @@ export const CraftJourneysCollage: React.FC = () => {
               <span className="cc-line block">craft journeys.</span>
             </span>
           </h2>
-          <span className="cc-pill absolute -top-7 left-1/2 ml-10 -rotate-6 rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-900 shadow-lg ring-1 ring-slate-200 sm:ml-28">
-            Our History
+
+          {/* Desktop organic tilted floating pill */}
+          <span className="cc-pill hidden sm:inline-block absolute -top-7 left-1/2 ml-20 lg:ml-28 -rotate-6 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-slate-900 shadow-lg ring-1 ring-slate-200">
+            Our Heritage
           </span>
         </div>
 

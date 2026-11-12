@@ -7,11 +7,20 @@ import {
   PhoneCall,
   EnvelopeSimple,
   MapPin,
+  WhatsappLogo,
+  XLogo,
+  InstagramLogo,
+  FacebookLogo,
+  YoutubeLogo,
+  ArrowRight,
+  ShieldCheck,
 } from '@phosphor-icons/react';
+import { siteConfig } from '@/config/site';
+import { BrandLogo } from './BrandLogo';
 
 export const ScenicLandscapeFooter: React.FC = () => {
   return (
-    <footer className="relative w-full overflow-hidden select-none min-h-[560px] sm:min-h-[620px] pt-14 sm:pt-20 pb-10 flex flex-col justify-between bg-slate-950">
+    <footer className="relative w-full overflow-hidden select-none min-h-[560px] sm:min-h-[620px] pt-14 sm:pt-20 pb-28 sm:pb-32 lg:pb-12 flex flex-col justify-between bg-slate-950">
       {/* High-Resolution Green Mountain Aerial Photographic Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img
@@ -29,31 +38,64 @@ export const ScenicLandscapeFooter: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 items-start">
             {/* Brand & Contact Info */}
             <div className="lg:col-span-5 space-y-5">
-              <Link href="/" className="inline-flex items-center gap-2.5 group">
-                <span className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#FF5B37] to-[#FFA07A] text-white flex items-center justify-center shadow-lg shadow-[#FF5B37]/30 group-hover:scale-105 transition-transform">
-                  <Compass size={22} weight="bold" />
-                </span>
-                <span className="text-2xl font-black tracking-tight text-white">
-                  Traveli
-                </span>
-              </Link>
+              <BrandLogo size="lg" />
 
               <p className="text-xs sm:text-sm text-white/80 leading-relaxed max-w-sm">
                 Every journey we organize is built on trust, safety, and unforgettable views.
               </p>
 
-              <div className="space-y-2 pt-2 text-xs sm:text-sm text-white/85">
-                <p className="flex items-center gap-2">
-                  <PhoneCall size={16} weight="bold" className="text-[#FF5B37]" />
-                  <span>+91 98114 72940</span>
+              {/* Direct Concierge Contact Strip with Proper Icons & Real Links */}
+              <div className="space-y-2.5 pt-2 text-xs sm:text-sm text-white/85">
+                <p className="flex items-center gap-2.5">
+                  <span className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                    <PhoneCall size={15} weight="bold" className="text-[#FF5B37]" />
+                  </span>
+                  <a
+                    href={`tel:${siteConfig.contact.phoneRaw}`}
+                    className="hover:text-[#FF5B37] transition-colors font-medium"
+                  >
+                    {siteConfig.contact.phoneDisplay}
+                  </a>
                 </p>
-                <p className="flex items-center gap-2">
-                  <EnvelopeSimple size={16} weight="bold" className="text-[#FF5B37]" />
-                  <span>concierge@traveli.in</span>
+
+                <p className="flex items-center gap-2.5">
+                  <span className="w-7 h-7 rounded-lg bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center shrink-0">
+                    <WhatsappLogo size={15} weight="fill" className="text-[#34E0A1]" />
+                  </span>
+                  <a
+                    href={siteConfig.contact.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#34E0A1] transition-colors font-medium text-emerald-300"
+                  >
+                    WhatsApp Concierge (24/7 Support)
+                  </a>
                 </p>
-                <p className="flex items-center gap-2">
-                  <MapPin size={16} weight="fill" className="text-[#FF5B37]" />
-                  <span>Tapovan, Rishikesh, Uttarakhand &amp; CP, New Delhi</span>
+
+                <p className="flex items-center gap-2.5">
+                  <span className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                    <EnvelopeSimple size={15} weight="bold" className="text-[#FF5B37]" />
+                  </span>
+                  <a
+                    href={`mailto:${siteConfig.contact.email}`}
+                    className="hover:text-[#FF5B37] transition-colors font-medium"
+                  >
+                    {siteConfig.contact.email}
+                  </a>
+                </p>
+
+                <p className="flex items-start gap-2.5">
+                  <span className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <MapPin size={15} weight="fill" className="text-[#FF5B37]" />
+                  </span>
+                  <a
+                    href="https://maps.google.com/?q=Tapovan+Rishikesh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#FF5B37] transition-colors text-white/75 leading-snug"
+                  >
+                    {siteConfig.contact.addressPrimary}
+                  </a>
                 </p>
               </div>
             </div>
@@ -63,14 +105,42 @@ export const ScenicLandscapeFooter: React.FC = () => {
               <h4 className="text-xs font-bold uppercase tracking-wider text-white/60 mb-3">
                 Essential Links
               </h4>
-              <ul className="space-y-2 text-xs sm:text-sm text-white/90">
-                <li><Link href="/" className="hover:text-[#FF5B37] transition-colors">Home</Link></li>
-                <li><Link href="/destinations" className="hover:text-[#FF5B37] transition-colors">All Destinations</Link></li>
-                <li><Link href="/pricing" className="hover:text-[#FF5B37] transition-colors">Pricing &amp; Fleet Tariff</Link></li>
-                <li><Link href="/about" className="hover:text-[#FF5B37] transition-colors">About Traveli</Link></li>
-                <li><Link href="/team" className="hover:text-[#FF5B37] transition-colors">Leadership &amp; Stewards</Link></li>
-                <li><Link href="/blog" className="hover:text-[#FF5B37] transition-colors">Travel Journal &amp; Guides</Link></li>
-                <li><Link href="/contact" className="hover:text-[#FF5B37] transition-colors">Get in Touch</Link></li>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-white/90">
+                <li>
+                  <Link href="/" className="hover:text-[#FF5B37] transition-colors inline-flex items-center gap-1 group">
+                    <span>Home</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/destinations" className="hover:text-[#FF5B37] transition-colors inline-flex items-center gap-1 group">
+                    <span>All Destinations</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/pricing" className="hover:text-[#FF5B37] transition-colors inline-flex items-center gap-1 group">
+                    <span>Pricing &amp; Fleet Tariff</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="hover:text-[#FF5B37] transition-colors inline-flex items-center gap-1 group">
+                    <span>About Traveli</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/team" className="hover:text-[#FF5B37] transition-colors inline-flex items-center gap-1 group">
+                    <span>Leadership &amp; Stewards</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="hover:text-[#FF5B37] transition-colors inline-flex items-center gap-1 group">
+                    <span>Travel Journal &amp; Guides</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-[#FF5B37] transition-colors inline-flex items-center gap-1 group">
+                    <span>Get in Touch</span>
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -79,35 +149,115 @@ export const ScenicLandscapeFooter: React.FC = () => {
               <h4 className="text-xs font-bold uppercase tracking-wider text-white/60 mb-3">
                 Uttarakhand &amp; India
               </h4>
-              <ul className="space-y-2 text-xs sm:text-sm text-white/90">
-                <li><Link href="/destinations/rishikesh" className="hover:text-[#FF5B37] transition-colors">Rishikesh &amp; Ganga Valley</Link></li>
-                <li><Link href="/destinations/kedarnath" className="hover:text-[#FF5B37] transition-colors">Kedarnath Sacred Dham</Link></li>
-                <li><Link href="/destinations/auli" className="hover:text-[#FF5B37] transition-colors">Auli Snow Ski Meadows</Link></li>
-                <li><Link href="/destinations/jim-corbett" className="hover:text-[#FF5B37] transition-colors">Jim Corbett Tiger Reserve</Link></li>
-                <li><Link href="/destinations/nainital" className="hover:text-[#FF5B37] transition-colors">Nainital &amp; Kumaon Lakes</Link></li>
-                <li><Link href="/destinations/mussoorie" className="hover:text-[#FF5B37] transition-colors">Mussoorie &amp; Dhanaulti Ridge</Link></li>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-white/90">
+                <li>
+                  <Link href="/destinations/rishikesh" className="hover:text-[#FF5B37] transition-colors">
+                    Rishikesh &amp; Ganga Valley
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/destinations/kedarnath" className="hover:text-[#FF5B37] transition-colors">
+                    Kedarnath Sacred Dham
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/destinations/auli" className="hover:text-[#FF5B37] transition-colors">
+                    Auli Snow Ski Meadows
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/destinations/jim-corbett" className="hover:text-[#FF5B37] transition-colors">
+                    Jim Corbett Tiger Reserve
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/destinations/nainital" className="hover:text-[#FF5B37] transition-colors">
+                    Nainital &amp; Kumaon Lakes
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/destinations/mussoorie" className="hover:text-[#FF5B37] transition-colors">
+                    Mussoorie &amp; Dhanaulti Ridge
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
 
-          {/* Bottom Copyright & Social Icons */}
+          {/* Bottom Copyright & Proper Social Icons Strip */}
           <div className="mt-10 pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/70">
             <p>
-              © {new Date().getFullYear()} Traveli. All rights reserved. Developed by{' '}
+              © {new Date().getFullYear()} {siteConfig.shortName}. All rights reserved. Developed by{' '}
               <a
-                href="https://tanujbuildsite.com/"
+                href={siteConfig.author.website}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-[#FF5B37] font-semibold underline underline-offset-2 transition-colors"
               >
-                Tanujtanujbuildsite
+                {siteConfig.author.name}
               </a>
             </p>
-            <div className="flex items-center gap-4 text-white">
-              <span className="hover:text-[#FF5B37] transition-colors cursor-pointer font-bold">𝕏</span>
-              <span className="hover:text-[#FF5B37] transition-colors cursor-pointer font-bold">f</span>
-              <span className="hover:text-[#FF5B37] transition-colors cursor-pointer font-bold">▶</span>
-              <span className="hover:text-[#FF5B37] transition-colors cursor-pointer font-bold">📸</span>
+
+            {/* Social Channels with Real Vector Icons and Proper Links */}
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-white/50 mr-1 hidden sm:inline-block">
+                Follow:
+              </span>
+
+              {/* Twitter / X */}
+              <a
+                href={siteConfig.links.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Traveli on X (Twitter)"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FF5B37] border border-white/15 hover:border-[#FF5B37] text-white flex items-center justify-center transition-all duration-200 active:scale-95 shadow-xs"
+              >
+                <XLogo size={15} weight="bold" />
+              </a>
+
+              {/* Instagram */}
+              <a
+                href={siteConfig.links.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Traveli on Instagram"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FF5B37] border border-white/15 hover:border-[#FF5B37] text-white flex items-center justify-center transition-all duration-200 active:scale-95 shadow-xs"
+              >
+                <InstagramLogo size={15} weight="bold" />
+              </a>
+
+              {/* Facebook */}
+              <a
+                href={siteConfig.links.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Traveli on Facebook"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FF5B37] border border-white/15 hover:border-[#FF5B37] text-white flex items-center justify-center transition-all duration-200 active:scale-95 shadow-xs"
+              >
+                <FacebookLogo size={15} weight="bold" />
+              </a>
+
+              {/* YouTube */}
+              <a
+                href={siteConfig.links.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Subscribe to Traveli on YouTube"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FF5B37] border border-white/15 hover:border-[#FF5B37] text-white flex items-center justify-center transition-all duration-200 active:scale-95 shadow-xs"
+              >
+                <YoutubeLogo size={15} weight="bold" />
+              </a>
+
+              {/* WhatsApp Direct */}
+              <a
+                href={siteConfig.contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat with Concierge on WhatsApp"
+                className="w-8 h-8 rounded-full bg-emerald-500/20 hover:bg-emerald-500 border border-emerald-500/30 text-[#34E0A1] hover:text-white flex items-center justify-center transition-all duration-200 active:scale-95 shadow-xs"
+              >
+                <WhatsappLogo size={15} weight="fill" />
+              </a>
             </div>
           </div>
         </div>
@@ -128,4 +278,3 @@ export const ScenicLandscapeFooter: React.FC = () => {
     </footer>
   );
 };
-

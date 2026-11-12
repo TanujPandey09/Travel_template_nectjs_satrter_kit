@@ -259,12 +259,17 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
 
           {/* Left: text */}
           <div className="cta-text relative z-10 max-w-xl text-white">
+            {pillBadge && (
+              <div className="sm:hidden mb-3.5 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-xs font-bold text-white shadow-sm -rotate-2">
+                <span>{pillBadge}</span>
+              </div>
+            )}
             <div className="relative inline-block">
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08]">
                 {title}
               </h2>
               {pillBadge && (
-                <span className="cta-pill absolute -top-5 left-[38%] -rotate-12 rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-900 shadow-lg whitespace-nowrap">
+                <span className="cta-pill hidden sm:inline-block absolute -top-5 left-[38%] -rotate-12 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-slate-900 shadow-lg whitespace-nowrap">
                   {pillBadge}
                 </span>
               )}
@@ -278,19 +283,19 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
               {buttonHref ? (
                 <Link
                   href={buttonHref}
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-slate-900 shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer hover:bg-[#FF5B37] hover:text-white group"
+                  className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#FF5B37] to-[#FFA07A] hover:from-[#E64A26] hover:to-[#FF8C66] px-8 py-4 text-sm sm:text-base font-bold text-white shadow-[0_10px_30px_rgba(255,91,55,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer group"
                 >
                   <span>{buttonText}</span>
-                  <ArrowRight size={18} weight="bold" className="text-[#FF5B37] group-hover:text-white transition-colors" />
+                  <ArrowRight size={18} weight="bold" className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               ) : (
                 <button
                   type="button"
                   onClick={handleClick}
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-slate-900 shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer hover:bg-[#FF5B37] hover:text-white group"
+                  className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#FF5B37] to-[#FFA07A] hover:from-[#E64A26] hover:to-[#FF8C66] px-8 py-4 text-sm sm:text-base font-bold text-white shadow-[0_10px_30px_rgba(255,91,55,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer group"
                 >
                   <span>{buttonText}</span>
-                  <ArrowRight size={18} weight="bold" className="text-[#FF5B37] group-hover:text-white transition-colors" />
+                  <ArrowRight size={18} weight="bold" className="group-hover:translate-x-1 transition-transform" />
                 </button>
               )}
             </div>

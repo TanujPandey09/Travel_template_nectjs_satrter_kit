@@ -16,6 +16,7 @@ import {
 import { Navbar } from '@/components/Navbar';
 import { ScenicLandscapeFooter } from '@/components/ScenicLandscapeFooter';
 import { PlanJourneyModal } from '@/components/PlanJourneyModal';
+import { siteConfig } from '@/config/site';
 
 export default function ContactPage() {
   const [plannerModalOpen, setPlannerModalOpen] = useState(false);
@@ -105,7 +106,7 @@ export default function ContactPage() {
               <div className="space-y-3.5 z-10 pt-8 sm:pt-12">
                 {/* Pill 1: Phone */}
                 <a
-                  href="tel:+919811472940"
+                  href={`tel:${siteConfig.contact.phoneRaw}`}
                   className="rounded-2xl sm:rounded-[22px] bg-white/20 backdrop-blur-md border border-white/30 p-3.5 sm:p-4 flex items-center gap-3.5 text-white hover:bg-white/25 transition-all shadow-md group/pill"
                 >
                   <div className="w-11 h-11 rounded-full bg-white text-slate-900 flex items-center justify-center shrink-0 shadow-sm group-hover/pill:scale-105 transition-transform">
@@ -116,14 +117,14 @@ export default function ContactPage() {
                       Phone Number
                     </span>
                     <span className="text-sm sm:text-base font-bold text-white tracking-tight">
-                      +91 98114 72940
+                      {siteConfig.contact.phoneDisplay}
                     </span>
                   </div>
                 </a>
 
                 {/* Pill 2: Email */}
                 <a
-                  href="mailto:concierge@traveli.in"
+                  href={`mailto:${siteConfig.contact.email}`}
                   className="rounded-2xl sm:rounded-[22px] bg-white/20 backdrop-blur-md border border-white/30 p-3.5 sm:p-4 flex items-center gap-3.5 text-white hover:bg-white/25 transition-all shadow-md group/pill"
                 >
                   <div className="w-11 h-11 rounded-full bg-white text-slate-900 flex items-center justify-center shrink-0 shadow-sm group-hover/pill:scale-105 transition-transform">
@@ -134,7 +135,7 @@ export default function ContactPage() {
                       Email Address
                     </span>
                     <span className="text-sm sm:text-base font-bold text-white tracking-tight">
-                      concierge@traveli.in
+                      {siteConfig.contact.email}
                     </span>
                   </div>
                 </a>

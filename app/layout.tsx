@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
+import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://traveli.com'),
@@ -44,27 +45,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://traveli.com',
-    title: 'Traveli • Your Next Adventure Is One Click Away',
-    description:
-      'Curated holiday expeditions, day-by-day itineraries, luxury Maharaja Tempo Travellers, and verified chauffeurs with zero hidden fees.',
-    siteName: 'Traveli Journeys',
+    url: siteConfig.url,
+    title: `${siteConfig.name} • ${siteConfig.tagline}`,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
     images: [
       {
-        url: 'https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Traveli Luxury Tour Packages & Chauffeur Fleet',
+        alt: `${siteConfig.name} • ${siteConfig.tagline}`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Traveli • Your Next Adventure Is One Click Away',
-    description:
-      'Curated holiday expeditions, day-by-day itineraries, and luxury Maharaja Tempo Travellers.',
-    images: ['https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&w=1200'],
-    creator: '@traveli_journeys',
+    title: `${siteConfig.name} • ${siteConfig.tagline}`,
+    description: siteConfig.description,
+    images: ['/opengraph-image'],
+    creator: siteConfig.links.twitter,
   },
   robots: {
     index: true,
@@ -88,15 +87,15 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'TravelAgency',
-    name: 'Traveli Tours & Chauffeur Fleet',
-    image: 'https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    '@id': 'https://traveli.com',
-    url: 'https://traveli.com',
-    telephone: '+91-98112-23344',
+    name: siteConfig.name,
+    image: `${siteConfig.url}/opengraph-image`,
+    '@id': siteConfig.url,
+    url: siteConfig.url,
+    telephone: siteConfig.contact.phoneRaw,
     priceRange: '₹₹ - ₹₹₹₹',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Barakhamba Road, Connaught Place',
+      streetAddress: siteConfig.contact.addressSecondary,
       addressLocality: 'New Delhi',
       postalCode: '110001',
       addressCountry: 'IN',
@@ -108,8 +107,8 @@ export default function RootLayout({
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '2480',
+      ratingValue: siteConfig.stats.rating,
+      reviewCount: siteConfig.stats.reviewsCount,
       bestRating: '5',
       worstRating: '1',
     },

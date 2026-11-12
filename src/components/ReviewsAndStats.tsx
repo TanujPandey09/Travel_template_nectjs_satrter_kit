@@ -253,8 +253,12 @@ export const ReviewsAndStats: React.FC = () => {
       className="w-full overflow-hidden border-b border-slate-100 bg-white px-4 sm:px-6 md:px-10 lg:px-14 xl:px-20 py-14 sm:py-20 md:py-24"
     >
       <div className="mx-auto w-full max-w-7xl">
-        {/* Heading with tilted pill */}
+        {/* Heading with responsive tilted pill */}
         <div className="rev-head relative mb-10 sm:mb-14">
+          <div className="sm:hidden mb-3 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-50 border border-slate-200/90 text-xs font-bold text-slate-700 shadow-2xs -rotate-2">
+            <span>Happy Travelers</span>
+          </div>
+
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-slate-900">
             <span className="block overflow-hidden pb-1">
               <span className="rev-line block">Memorable journeys</span>
@@ -263,7 +267,8 @@ export const ReviewsAndStats: React.FC = () => {
               <span className="rev-line block">shared by travelers</span>
             </span>
           </h2>
-          <span className="rev-pill absolute -top-6 left-[8.5rem] -rotate-12 rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-900 shadow-lg ring-1 ring-slate-200 sm:left-[11rem]">
+
+          <span className="rev-pill hidden sm:inline-block absolute -top-6 left-[11rem] -rotate-12 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-slate-900 shadow-lg ring-1 ring-slate-200">
             Happy Travelers
           </span>
         </div>

@@ -11,6 +11,7 @@ import {
   Sparkle,
 } from '@phosphor-icons/react';
 import { AGENCY_CONFIG } from '../data/travelData';
+import { siteConfig } from '@/config/site';
 
 interface PlanJourneyModalProps {
   isOpen: boolean;
@@ -71,9 +72,9 @@ export const PlanJourneyModal: React.FC<PlanJourneyModalProps> = ({
   };
 
   const whatsappDirectUrl = `https://wa.me/${
-    AGENCY_CONFIG.whatsappNumber
+    siteConfig.contact.whatsappNumber || AGENCY_CONFIG.whatsappNumber
   }?text=${encodeURIComponent(
-    `Hello Travelioo,\n• Name: ${fullName || 'Guest'}\n• Phone: ${phone}\n• Window: ${travelDate}\n• Group Size: ${paxCount}\n• Requirements: ${tripNotes}`
+    `Hello ${siteConfig.name},\n• Name: ${fullName || 'Guest'}\n• Phone: ${phone}\n• Window: ${travelDate}\n• Group Size: ${paxCount}\n• Requirements: ${tripNotes}`
   )}`;
 
   return (
