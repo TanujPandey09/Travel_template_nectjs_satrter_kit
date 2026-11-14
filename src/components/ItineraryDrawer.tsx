@@ -49,7 +49,7 @@ export const ItineraryDrawer: React.FC<ItineraryDrawerProps> = ({
       : '5★ Luxury Palace';
 
   const whatsappText = encodeURIComponent(
-    `Hello Travelioo, I would like to book the tour "${selectedPackage.title}" (${selectedPackage.durationDays}D/${selectedPackage.durationNights}N) in the ${tierLabel} tier for ${guestCount} travelers. Total estimated price: ₹${totalEstimate.toLocaleString('en-IN')}. Please share available dates.`
+    `Hello Alpinex, I would like to book the tour "${selectedPackage.title}" (${selectedPackage.durationDays}D/${selectedPackage.durationNights}N) in the ${tierLabel} tier for ${guestCount} travelers. Total estimated price: ₹${totalEstimate.toLocaleString('en-IN')}. Please share available dates.`
   );
 
   return (

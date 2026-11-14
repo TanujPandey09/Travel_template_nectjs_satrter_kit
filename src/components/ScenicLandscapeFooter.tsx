@@ -123,7 +123,7 @@ export const ScenicLandscapeFooter: React.FC = () => {
                 </li>
                 <li>
                   <Link href="/about" className="hover:text-[#FF5B37] transition-colors inline-flex items-center gap-1 group">
-                    <span>About Traveli</span>
+                    <span>About Alpinex</span>
                   </Link>
                 </li>
                 <li>
@@ -209,7 +209,7 @@ export const ScenicLandscapeFooter: React.FC = () => {
                 href={siteConfig.links.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow Traveli on X (Twitter)"
+                aria-label="Follow Alpinex on X (Twitter)"
                 className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FF5B37] border border-white/15 hover:border-[#FF5B37] text-white flex items-center justify-center transition-all duration-200 active:scale-95 shadow-xs"
               >
                 <XLogo size={15} weight="bold" />
@@ -220,7 +220,7 @@ export const ScenicLandscapeFooter: React.FC = () => {
                 href={siteConfig.links.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow Traveli on Instagram"
+                aria-label="Follow Alpinex on Instagram"
                 className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FF5B37] border border-white/15 hover:border-[#FF5B37] text-white flex items-center justify-center transition-all duration-200 active:scale-95 shadow-xs"
               >
                 <InstagramLogo size={15} weight="bold" />
@@ -231,7 +231,7 @@ export const ScenicLandscapeFooter: React.FC = () => {
                 href={siteConfig.links.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow Traveli on Facebook"
+                aria-label="Follow Alpinex on Facebook"
                 className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FF5B37] border border-white/15 hover:border-[#FF5B37] text-white flex items-center justify-center transition-all duration-200 active:scale-95 shadow-xs"
               >
                 <FacebookLogo size={15} weight="bold" />
@@ -242,7 +242,7 @@ export const ScenicLandscapeFooter: React.FC = () => {
                 href={siteConfig.links.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Subscribe to Traveli on YouTube"
+                aria-label="Subscribe to Alpinex on YouTube"
                 className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FF5B37] border border-white/15 hover:border-[#FF5B37] text-white flex items-center justify-center transition-all duration-200 active:scale-95 shadow-xs"
               >
                 <YoutubeLogo size={15} weight="bold" />
@@ -263,7 +263,7 @@ export const ScenicLandscapeFooter: React.FC = () => {
         </div>
       </div>
 
-      {/* Giant Stylized "Traveli" Watermark Text across the bottom of the mountains */}
+      {/* Giant Stylized "Alpinex" Watermark Text across the bottom of the mountains */}
       <div className="relative w-full text-center overflow-hidden pointer-events-none mt-auto">
         <span
           className="text-[14vw] font-black tracking-tight text-white/20 block select-none uppercase leading-none"
@@ -272,7 +272,7 @@ export const ScenicLandscapeFooter: React.FC = () => {
             filter: 'drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5))',
           }}
         >
-          Traveli
+          Alpinex
         </span>
       </div>
     </footer>

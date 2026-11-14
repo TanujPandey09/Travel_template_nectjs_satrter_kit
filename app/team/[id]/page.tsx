@@ -20,13 +20,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!member) {
     return {
-      title: 'Team Dossier | Traveli Expeditions',
+      title: 'Team Dossier | Alpinex Expeditions',
     };
   }
 
   return {
-    title: `${member.name} — ${member.role} | Traveli Himalayas`,
-    description: `${member.name}, ${member.role} at Traveli. ${member.summary} Origin: ${member.origin}.`,
+    title: `${member.name} — ${member.role} | Alpinex Himalayas`,
+    description: `${member.name}, ${member.role} at Alpinex. ${member.summary} Origin: ${member.origin}.`,
   };
 }
 

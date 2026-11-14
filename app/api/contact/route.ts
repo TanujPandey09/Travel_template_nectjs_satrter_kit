@@ -35,7 +35,7 @@ export async function POST(request: Request) {
 
     // Log lead to server console
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('📥 NEW TRAVELI INQUIRY RECEIVED:');
+    console.log('📥 NEW ALPINEX INQUIRY RECEIVED:');
     console.log(JSON.stringify(leadPayload, null, 2));
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            content: `🚀 **New Traveli Inquiry**\n**Name:** ${leadPayload.name}\n**Phone:** ${leadPayload.phone}\n**Email:** ${leadPayload.email}\n**Service:** ${leadPayload.service}\n**Destination:** ${leadPayload.destination}\n**Pax:** ${leadPayload.passengers}\n**Notes:** ${leadPayload.message}`,
+            content: `🚀 **New Alpinex Inquiry**\n**Name:** ${leadPayload.name}\n**Phone:** ${leadPayload.phone}\n**Email:** ${leadPayload.email}\n**Service:** ${leadPayload.service}\n**Destination:** ${leadPayload.destination}\n**Pax:** ${leadPayload.passengers}\n**Notes:** ${leadPayload.message}`,
           }),
         });
       } catch (err) {

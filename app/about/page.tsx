@@ -689,7 +689,7 @@ export default function AboutPage() {
       {/* =========================================================================
           SECTION 7: UNIVERSAL SCENIC LANDSCAPE MOUNTAIN FOOTER
           Identical across all pages: Panoramic green mountains + floating glassmorphic
-          card + giant watermarked "Traveli" across mountain base
+          card + giant watermarked "Alpinex" across mountain base
          ========================================================================= */}
       <ScenicLandscapeFooter />
 

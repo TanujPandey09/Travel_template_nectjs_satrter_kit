@@ -90,7 +90,7 @@ export default function HomePage() {
         {/* 14. Architectural Highlights: 3 Vertical Masterwork Cards */}
         <EditorialHighlights />
 
-        {/* 15. Traveli Instagram Feed: Infinite Left-to-Right Carousel */}
+        {/* 15. Alpinex Instagram Feed: Infinite Left-to-Right Carousel */}
         <InstagramFeed onOpenPlanner={handleOpenPlanner} />
       </main>
 

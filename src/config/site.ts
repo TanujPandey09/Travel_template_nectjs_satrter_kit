@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * TRAVELI • MASTER TEMPLATE CONFIGURATION
+ * ALPINEX • MASTER TEMPLATE CONFIGURATION
  * =========================================================================
  * 
  * Customize your travel agency branding, contact information, social handles,
@@ -48,25 +48,25 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: 'TRAVELI',
-  shortName: 'Traveli',
+  name: 'ALPINEX',
+  shortName: 'Alpinex',
   tagline: 'Curated Expeditions & Bespoke Mountain Journeys',
   description:
     'Award-winning luxury travel template and Next.js starter kit. Curated holiday circuits, high-altitude chauffeur fleet, and transparent pricing.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://traveli.in',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://alpinex.com',
   ogImage: '/opengraph-image',
   links: {
-    twitter: 'https://twitter.com/traveli_expeditions',
-    facebook: 'https://facebook.com/traveli.expeditions',
-    instagram: 'https://instagram.com/traveli.expeditions',
-    youtube: 'https://youtube.com/@traveli_expeditions',
+    twitter: 'https://twitter.com/alpinex_travel',
+    facebook: 'https://facebook.com/alpinex.travel',
+    instagram: 'https://instagram.com/alpinex.travel',
+    youtube: 'https://youtube.com/@alpinex_travel',
   },
   contact: {
     phoneDisplay: '+91 98114 72940',
     phoneRaw: '+919811472940',
     whatsappNumber: '919811472940',
     whatsappUrl: 'https://wa.me/919811472940',
-    email: 'concierge@traveli.in',
+    email: 'concierge@alpinex.com',
     addressPrimary: 'Tapovan, Laxman Jhula Road, Rishikesh, Uttarakhand 249192',
     addressSecondary: 'Statesman House, Barakhamba Road, Connaught Place, New Delhi 110001',
     tourismRegNumber: 'UK-TOUR-2026-99214',

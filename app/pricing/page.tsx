@@ -537,7 +537,7 @@ export default function PricingPage() {
           <div className="p-8 sm:p-10 rounded-3xl border border-slate-200/90 bg-white shadow-xs">
             <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mb-6 flex items-center gap-2">
               <ShieldCheck size={24} weight="fill" className="text-emerald-600" />
-              <span>The Traveli Transparent Billing Guarantee</span>
+              <span>The Alpinex Transparent Billing Guarantee</span>
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs sm:text-sm text-slate-600">

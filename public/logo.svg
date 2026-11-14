@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
   <defs>
-    <linearGradient id="traveli_brand_grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+    <linearGradient id="alpinex_brand_grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FF5B37" />
       <stop offset="0.5" stop-color="#FF6E4D" />
       <stop offset="1" stop-color="#FFA07A" />
     </linearGradient>
-    <filter id="traveli_shadow" x="0" y="0" width="60" height="60" filterUnits="userSpaceOnUse">
+    <filter id="alpinex_shadow" x="0" y="0" width="60" height="60" filterUnits="userSpaceOnUse">
       <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#FF5B37" flood-opacity="0.35" />
     </filter>
   </defs>
 
   <!-- Squircle Emblem (48x48) -->
-  <g transform="translate(6, 6)" filter="url(#traveli_shadow)">
-    <rect width="48" height="48" rx="14" fill="url(#traveli_brand_grad)" />
+  <g transform="translate(6, 6)" filter="url(#alpinex_shadow)">
+    <rect width="48" height="48" rx="14" fill="url(#alpinex_brand_grad)" />
     
     <!-- Outer Orbit Ring -->
     <circle cx="24" cy="24" r="16" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1.2" stroke-dasharray="1.5 2" />
@@ -40,8 +40,8 @@
     <circle cx="24" cy="24" r="1.5" fill="#FFFFFF" />
   </g>
 
-  <!-- Wordmark "TRAVELI" -->
-  <text x="68" y="32" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" letter-spacing="4.5" fill="#0B1520">TRAVELI</text>
+  <!-- Wordmark "ALPINEX" -->
+  <text x="68" y="32" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" letter-spacing="4.5" fill="#0B1520">ALPINEX</text>
 
   <!-- Subtitle "CURATED EXPEDITIONS" -->
   <text x="69" y="46" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="700" letter-spacing="2.8" fill="#FF5B37">CURATED EXPEDITIONS</text>

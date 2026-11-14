@@ -81,7 +81,7 @@ export const BentoFeatures: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100/70 text-[#FF5B37] text-xs font-bold uppercase tracking-wider mb-3">
             <Sparkle size={14} weight="fill" />
-            <span>Why Travelioo Is Rated #1</span>
+            <span>Why Alpinex Is Rated #1</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
             The Gold Standard In Tour & Fleet Management

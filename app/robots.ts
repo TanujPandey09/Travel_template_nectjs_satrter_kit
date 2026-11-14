@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'],
     },
-    sitemap: 'https://traveli.com/sitemap.xml',
+    sitemap: 'https://alpinex.com/sitemap.xml',
   };
 }
 

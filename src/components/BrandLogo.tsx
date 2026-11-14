@@ -13,7 +13,7 @@ export interface BrandLogoProps {
 }
 
 /**
- * TRAVELI Luxury Expedition Brand Logo
+ * ALPINEX Luxury Expedition Brand Logo
  * 
  * Features a bespoke faceted North-Star & Alpine Compass emblem,
  * precision squircle housing, and optometrically tracked editorial logotype.
@@ -83,7 +83,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   if (variant === 'mark') {
     if (!href) return LogoMark;
     return (
-      <Link href={href} onClick={onClick} className={`inline-flex group ${className}`} aria-label="Traveli Home">
+      <Link href={href} onClick={onClick} className={`inline-flex group ${className}`} aria-label="Alpinex Home">
         {LogoMark}
       </Link>
     );
@@ -102,7 +102,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
               : 'text-white group-hover:text-white/95'
           }`}
         >
-          TRAVELI
+          ALPINEX
         </span>
         {variant === 'full' && (
           <span

@@ -162,7 +162,7 @@ export const TeamMemberDetailClient: React.FC<TeamMemberDetailClientProps> = ({
                   </button>
 
                   <a
-                    href={`https://wa.me/${AGENCY_CONFIG.whatsappNumber}?text=${encodeURIComponent(`Hello Traveli, I would like to consult with ${member.name} for our upcoming Himalayan expedition.`)}`}
+                    href={`https://wa.me/${AGENCY_CONFIG.whatsappNumber}?text=${encodeURIComponent(`Hello Alpinex, I would like to consult with ${member.name} for our upcoming Himalayan expedition.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-6 py-3.5 rounded-full border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/30 text-slate-700 hover:text-emerald-700 text-xs sm:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer"

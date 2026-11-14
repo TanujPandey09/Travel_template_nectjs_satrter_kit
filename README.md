@@ -1,4 +1,4 @@
-# Traveli • Luxury Travel & Tour Operator Next.js Starter Kit
+# Alpinex • Luxury Travel & Tour Operator Next.js Starter Kit
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.4.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
@@ -7,7 +7,7 @@
 [![GSAP](https://img.shields.io/badge/GSAP-3.15-88CE02?style=for-the-badge&logo=greensock&logoColor=white)](https://gsap.com/)
 [![License](https://img.shields.io/badge/License-Commercial-FF5B37?style=for-the-badge)](https://tanujbuildsite.com/)
 
-**Traveli** is an elite, high-converting luxury travel agency and expedition tour operator starter kit built with **Next.js 16 (App Router)**, **React 19**, and **Tailwind CSS v4**.
+**Alpinex** is an elite, high-converting luxury travel agency and expedition tour operator starter kit built with **Next.js 16 (App Router)**, **React 19**, and **Tailwind CSS v4**.
 
 Designed for travel companies, luxury safari charters, high-altitude expedition operators, chauffeur fleets, and boutique hospitality agencies who want an award-winning, editorial-grade web presence that converts visitors into bookings.
 
@@ -146,7 +146,7 @@ All navigation links, footer contact blocks, modal WhatsApp connectors, and meta
 
 ## 🚢 Deploying to Vercel
 
-The fastest way to deploy your Traveli template is via [Vercel](https://vercel.com/):
+The fastest way to deploy your Alpinex template is via [Vercel](https://vercel.com/):
 
 1. Push your repository to **GitHub**, **GitLab**, or **Bitbucket**.
 2. Go to **Vercel Dashboard** -> Click **"Add New Project"**.

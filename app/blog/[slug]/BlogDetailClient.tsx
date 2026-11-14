@@ -199,7 +199,7 @@ export const BlogDetailClient: React.FC<BlogDetailClientProps> = ({
                   </h4>
                   <p className="text-xs font-bold text-[#FF5B37]">{post.author.role}</p>
                   <p className="text-xs text-slate-500 leading-relaxed">
-                    Local mountain leader and contributor to Traveli’s Himalayan Safety &amp; Route Logistics Commission.
+                    Local mountain leader and contributor to Alpinex’s Himalayan Safety &amp; Route Logistics Commission.
                   </p>
                 </div>
               </div>

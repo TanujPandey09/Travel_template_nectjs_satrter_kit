@@ -136,7 +136,7 @@ export default function TeamPage() {
 
               {/* Main Headline */}
               <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] max-w-3xl">
-                The mountaineers &amp;<br className="hidden sm:inline" /> guides behind Traveli
+                The mountaineers &amp;<br className="hidden sm:inline" /> guides behind Alpinex
               </h1>
 
               {/* Subtle supporting narrative */}

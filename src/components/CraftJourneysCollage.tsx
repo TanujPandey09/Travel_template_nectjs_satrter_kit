@@ -337,7 +337,7 @@ export const CraftJourneysCollage: React.FC = () => {
         {/* Quote */}
         <div className="cc-quote mx-auto mt-10 max-w-[660px] text-center sm:mt-16">
           <p className="text-lg leading-relaxed text-slate-600 sm:text-[22px] sm:leading-[34px]">
-            &quot;We built Traveli for travelers seeking authentic journeys through Devbhoomi and India&apos;s greatest landscapes — rooted in mountain safety, deep cultural reverence, and unmatched local mastery.&quot;
+            &quot;We built Alpinex for travelers seeking authentic journeys through Devbhoomi and India&apos;s greatest landscapes — rooted in mountain safety, deep cultural reverence, and unmatched local mastery.&quot;
           </p>
           <h4 className="mt-6 text-base font-semibold text-slate-900">
             Tanuj Sharma

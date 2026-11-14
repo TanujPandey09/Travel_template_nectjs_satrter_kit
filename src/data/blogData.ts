@@ -91,7 +91,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: '1. The 4 km Joshimath to Auli Cable Car Experience',
         body: 'Rather than tackling the steep, icy 16 km motor road during heavy snow, taking the Joshimath-to-Auli aerial ropeway is the ultimate way to arrive. Over 22 minutes, you soar over deep deodar forests, watching snowy peaks emerge on the horizon.',
-        tip: 'Cable car tickets operate on timed batches. Private hotel guests with pre-arranged Traveli vouchers receive priority boarding.',
+        tip: 'Cable car tickets operate on timed batches. Private hotel guests with pre-arranged Alpinex vouchers receive priority boarding.',
       },
       {
         heading: '2. Ski Coaching & Slope Breakdown for Beginners',
@@ -162,7 +162,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: 'February 05, 2026',
     readingTime: '5 min read',
     tags: ['Mountain Safety', 'Chauffeur Vetting', 'Hill Driving Tips', 'Uttarakhand Roads', 'Travel Protocols'],
-    overview: 'Driving through the Garhwal and Kumaon Himalayas is a masterclass in vigilance. With 200+ continuous hairpin curves, single-lane rock ledges, sudden monsoonal fog, and steep gradients, relying on plain-land city drivers is a major travel risk. Here is how Traveli ensures zero-compromise safety across our entire fleet.',
+    overview: 'Driving through the Garhwal and Kumaon Himalayas is a masterclass in vigilance. With 200+ continuous hairpin curves, single-lane rock ledges, sudden monsoonal fog, and steep gradients, relying on plain-land city drivers is a major travel risk. Here is how Alpinex ensures zero-compromise safety across our entire fleet.',
     sections: [
       {
         heading: '1. Engine Braking vs. Overheated Friction Brakes',
@@ -174,14 +174,14 @@ export const BLOG_POSTS: BlogPost[] = [
         body: 'On narrow Himalayan roads, ascending vehicles always have the right of way because restarting momentum on a 20% incline with a heavy load is hazardous. Professional hill drivers yield downward lanes smoothly without abrupt braking.',
       },
       {
-        heading: '3. Mandatory Equipment on Every Traveli Vehicle',
+        heading: '3. Mandatory Equipment on Every Alpinex Vehicle',
         body: 'All our SUVs, Innova Hycross, and Maharaja Tempo Travellers carry industrial tire snow chains, hydraulic heavy-lift jacks, sealed medical oxygen cylinders, multi-band hazard flashers, and dual dashcam telemetry.',
       },
     ],
     keyTakeaways: [
       'Never hire plain-land city drivers who lack mountain hill-license credentials.',
       'Uphill vehicles always retain the right-of-way on narrow mountain single tracks.',
-      'Traveli vehicles undergo rigorous 40-point safety inspections before every departure.',
+      'Alpinex vehicles undergo rigorous 40-point safety inspections before every departure.',
       'GPS speed limiters prevent high-speed cornering on winding ghat roads.',
     ],
     relatedSlugs: ['char-dham-yatra-2026-complete-guide', 'auli-winter-skiing-guide'],

@@ -305,7 +305,7 @@ export default function ContactPage() {
           <div className="relative w-full h-[360px] sm:h-[420px] md:h-[460px] rounded-3xl sm:rounded-[36px] overflow-hidden border border-slate-200/80 shadow-xl bg-slate-100">
             {/* Styled Map Background */}
             <iframe
-              title="Traveli Headquarters Location Map"
+              title="Alpinex Headquarters Location Map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.114881734674!2d77.215579!3d28.630042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37b67b1479%3A0x6b77242c70094c48!2sConnaught%20Place%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
               className="w-full h-full border-0 filter grayscale contrast-[0.95] opacity-90"
               loading="lazy"
@@ -329,7 +329,7 @@ export default function ContactPage() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center">
               <div className="px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs font-bold shadow-xl border border-white/20 flex items-center gap-1.5">
                 <MapPin size={14} weight="fill" className="text-[#FF5B37]" />
-                <span>Traveli Headquarters</span>
+                <span>Alpinex Headquarters</span>
               </div>
             </div>
           </div>

@@ -83,11 +83,11 @@ export interface FaqItem {
 }
 
 export const AGENCY_CONFIG = {
-  name: 'Traveli',
+  name: 'Alpinex',
   tagline: 'Bespoke Uttarakhand & Pan-India Expeditions • Luxury Chauffeur Fleet',
   phoneDisplay: '+91 98114 72940',
   whatsappNumber: '919811472940',
-  email: 'concierge@traveli.in',
+  email: 'concierge@alpinex.com',
   headquarters: 'Tapovan, Rishikesh, Uttarakhand & Connaught Place, New Delhi',
   tourismReg: 'UK-TOUR-2026-99214',
   gstin: '05AABCT9841K1Z8',

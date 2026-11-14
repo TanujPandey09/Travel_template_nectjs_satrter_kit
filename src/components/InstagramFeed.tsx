@@ -59,19 +59,19 @@ interface InstagramFeedProps {
 export const InstagramFeed: React.FC<InstagramFeedProps> = ({ onOpenPlanner }) => {
   return (
     <section
-      aria-label="Traveli Instagram Community Feed"
+      aria-label="Alpinex Instagram Community Feed"
       className="py-14 sm:py-20 md:py-24 bg-white w-full overflow-hidden select-none border-t border-slate-100 relative"
     >
       {/* Header matching user uploaded screenshot exactly */}
       <div className="text-center mb-10 sm:mb-12 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-20 max-w-7xl mx-auto flex flex-col items-center">
-        {/* Tilted Floating Pill Tag: Traveli.Insta */}
+        {/* Tilted Floating Pill Tag: Alpinex.Insta */}
         <div className="inline-block px-3.5 py-1 bg-white border border-slate-200/90 rounded-full shadow-xs text-xs font-semibold text-slate-700 -rotate-3 hover:rotate-0 transition-transform mb-3.5">
-          <span>Traveli.Insta</span>
+          <span>Alpinex.Insta</span>
         </div>
 
         {/* Large Bold Headline */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
-          Traveli Instagram feed
+          Alpinex Instagram feed
         </h2>
       </div>
 

@@ -4,10 +4,10 @@ import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
 import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://traveli.com'),
+  metadataBase: new URL('https://alpinex.com'),
   title: {
-    default: 'Traveli • Your Next Adventure Is One Click Away | Luxury Tours & Fleet',
-    template: '%s | Traveli Journeys',
+    default: 'Alpinex • Your Next Adventure Is One Click Away | Luxury Tours & Fleet',
+    template: '%s | Alpinex Journeys',
   },
   description:
     'Award-winning modern travel agency. Explore curated holiday tour packages, luxury Maharaja Tempo Travellers, and chauffeur-driven cabs with 100% transparent pricing and 24/7 dedicated travel support.',
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     'chauffeur driven outstation cab',
     'transparent fare calculator',
   ],
-  authors: [{ name: 'Traveli Tour & Travels Pvt Ltd' }],
-  creator: 'Traveli Journeys',
+  authors: [{ name: 'Alpinex Tour & Travels Pvt Ltd' }],
+  creator: 'Alpinex Journeys',
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     shortcut: '/icon.svg',
   },
   alternates: {
-    canonical: 'https://traveli.com',
+    canonical: 'https://alpinex.com',
   },
   formatDetection: {
     telephone: true,

@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
                 <Compass size={22} weight="bold" />
               </span>
               <span className="text-xl font-extrabold tracking-tight text-slate-900">
-                TRAVELIOO
+                ALPINEX
               </span>
             </div>
             <p className="text-sm text-slate-500 leading-relaxed max-w-sm">
@@ -86,7 +86,7 @@ export const Footer: React.FC = () => {
               </p>
               <p className="flex items-center gap-1.5 pt-1">
                 <EnvelopeSimple size={16} weight="bold" className="text-[#FF5B37] shrink-0" />
-                <span>concierge@travelioo.com</span>
+                <span>concierge@alpinex.com</span>
               </p>
               <p className="pt-2 text-[11px] text-slate-400">
                 Ministry of Tourism Lic: DL-TOUR-2024-884
@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
-            © {new Date().getFullYear()} Travelioo Tours &amp; Chauffeur Fleet Pvt Ltd. All rights reserved. Developed by{' '}
+            © {new Date().getFullYear()} Alpinex Expeditions &amp; Chauffeur Fleet Pvt Ltd. All rights reserved. Developed by{' '}
             <a
               href="https://tanujbuilds.site"
               target="_blank"
