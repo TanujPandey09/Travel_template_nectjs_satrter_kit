@@ -47,3 +47,6 @@ rendered_localhost.html
 DESIGN.md
 design-system/
 
+# Release Packages
+*.zip
+
