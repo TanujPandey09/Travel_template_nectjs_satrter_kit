@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg_grad" x1="540" y1="0" x2="540" y2="1920" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#070D14" />
+      <stop offset="25%" stop-color="#0B1520" />
+      <stop offset="60%" stop-color="#0F1F2F" />
+      <stop offset="85%" stop-color="#0B1520" />
+      <stop offset="100%" stop-color="#05080C" />
+    </linearGradient>
+
+    <!-- Warm Sunset Radial Glows -->
+    <radialGradient id="top_glow" cx="540" cy="380" r="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF5B37" stop-opacity="0.32" />
+      <stop offset="50%" stop-color="#FF5B37" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#FF5B37" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="bottom_glow" cx="540" cy="1550" r="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF5B37" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#34E0A1" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#0B1520" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Brand Orange Gradient -->
+    <linearGradient id="orange_grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF5B37" />
+      <stop offset="50%" stop-color="#FF6E4D" />
+      <stop offset="100%" stop-color="#FFA07A" />
+    </linearGradient>
+
+    <!-- Glass Fill -->
+    <linearGradient id="glass_card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.03" />
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="shadow_deep" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="28" stdDeviation="40" flood-color="#000000" flood-opacity="0.75" />
+    </filter>
+    <filter id="glow_brand" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#FF5B37" flood-opacity="0.5" />
+    </filter>
+    <filter id="badge_shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- 1. Background Fill -->
+  <rect width="1080" height="1920" fill="url(#bg_grad)" />
+  <circle cx="540" cy="380" r="480" fill="url(#top_glow)" />
+  <circle cx="540" cy="1550" r="500" fill="url(#bottom_glow)" />
+
+  <!-- Mountain Silhouette in Background (Subtle Alpine Peaks) -->
+  <path d="M-80 1200 L240 860 L480 1100 L760 740 L1160 1200 L1160 1920 L-80 1920 Z" fill="#0E1926" fill-opacity="0.45" />
+  <path d="M-40 1380 L360 980 L620 1240 L880 920 L1200 1380 L1200 1920 L-40 1920 Z" fill="#0A121C" fill-opacity="0.65" />
+
+  <!-- 2. TOP HOOK SECTION (Above Safe Zone & Spilling In) -->
+  <!-- Tech Stack Pill -->
+  <g transform="translate(540, 150)">
+    <rect x="-210" y="-24" width="420" height="48" rx="24" fill="#FFFFFF" fill-opacity="0.07" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="1.5" />
+    <circle cx="-170" cy="0" r="4.5" fill="#34E0A1" />
+    <text x="-150" y="7" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" letter-spacing="3" fill="#FFFFFF">NEXT.JS 16 • REACT 19</text>
+  </g>
+
+  <!-- Big Editorial Hook Headline -->
+  <text x="540" y="270" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="900" letter-spacing="2" fill="#FFFFFF">
+    STOP BUILDING
+  </text>
+  <text x="540" y="340" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="900" letter-spacing="2" fill="url(#orange_grad)">
+    2018 TRAVEL SITES
+  </text>
+
+  <!-- 3. CENTER HERO: FLOATING SMARTPHONE MOCKUP (Center 1:1 Safe Zone) -->
+  <g transform="translate(300, 420)" filter="url(#shadow_deep)">
+    <!-- Outer Titanium Bezel -->
+    <rect width="480" height="960" rx="58" fill="#151A22" stroke="#2B3648" stroke-width="5" />
+    
+    <!-- Screen Glass Canvas -->
+    <g transform="translate(14, 14)">
+      <rect width="452" height="932" rx="46" fill="#0B1520" />
+
+      <!-- Dynamic Island Notch -->
+      <rect x="166" y="16" width="120" height="30" rx="15" fill="#000000" />
+      <circle cx="264" cy="31" r="5.5" fill="#1A202C" />
+
+      <!-- App Header: Alpinex Brand -->
+      <g transform="translate(24, 76)">
+        <!-- Squircle Logo Mark -->
+        <rect width="36" height="36" rx="11" fill="url(#orange_grad)" />
+        <!-- Compass star -->
+        <polygon points="18,7 18,18 9,18" fill="#FFFFFF" />
+        <polygon points="18,7 18,18 27,18" fill="#FFE5DF" />
+        <polygon points="18,29 18,18 9,18" fill="#FFC7BA" />
+        <polygon points="18,29 18,18 27,18" fill="#FF9E8A" />
+        <circle cx="18" cy="18" r="2" fill="#0B1520" />
+
+        <!-- Logotype -->
+        <text x="48" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="900" letter-spacing="3" fill="#FFFFFF">ALPINEX</text>
+        
+        <!-- Right Call & WhatsApp Pills -->
+        <circle cx="340" cy="18" r="16" fill="#34E0A1" fill-opacity="0.15" stroke="#34E0A1" stroke-opacity="0.3" />
+        <circle cx="340" cy="18" r="5" fill="#34E0A1" />
+        <rect x="368" y="2" width="36" height="32" rx="16" fill="url(#orange_grad)" />
+        <text x="386" y="22" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" fill="#FFFFFF">GO</text>
+      </g>
+
+      <!-- App Hero Banner Card -->
+      <g transform="translate(24, 140)">
+        <rect width="404" height="230" rx="26" fill="#132030" stroke="#FFFFFF" stroke-opacity="0.1" />
+        <!-- Mountain Gradient Illustration -->
+        <path d="M0 160 L120 70 L220 140 L320 50 L404 120 L404 230 L0 230 Z" fill="#1C3048" />
+        <path d="M40 230 L160 110 L260 180 L360 90 L404 130 L404 230 Z" fill="#254263" />
+        <!-- Glowing Sunset Sun -->
+        <circle cx="320" cy="65" r="28" fill="#FF5B37" fill-opacity="0.75" filter="url(#glow_brand)" />
+
+        <!-- Card Headline Overlay -->
+        <text x="24" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#FFFFFF">Curated High-Altitude</text>
+        <text x="24" y="82" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="url(#orange_grad)">Expeditions 2026</text>
+        <text x="24" y="112" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF" fill-opacity="0.7">Private 4x4 Chauffeur &amp; Luxury Charters</text>
+        
+        <rect x="24" y="160" width="130" height="36" rx="18" fill="url(#orange_grad)" />
+        <text x="89" y="183" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" fill="#FFFFFF">EXPLORE TRIPS →</text>
+      </g>
+
+      <!-- Featured Destination Card -->
+      <g transform="translate(24, 396)">
+        <rect width="404" height="180" rx="24" fill="#0F1B28" stroke="#FFFFFF" stroke-opacity="0.08" />
+        <!-- Sub card elements -->
+        <rect x="18" y="18" width="144" height="144" rx="18" fill="#192A3E" />
+        <circle cx="90" cy="80" r="32" fill="#FF5B37" fill-opacity="0.2" />
+        <polygon points="90,56 102,96 78,96" fill="#34E0A1" />
+
+        <text x="180" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800" letter-spacing="1.5" fill="#34E0A1">FEATURED EXPEDITION</text>
+        <text x="180" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="900" fill="#FFFFFF">Kedarnath Dham</text>
+        <text x="180" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF" fill-opacity="0.6">VIP Heli &amp; Luxury Camp</text>
+        
+        <text x="180" y="146" font-family="system-ui, -apple-system, sans-serif" font-size="19" font-weight="900" fill="url(#orange_grad)">₹34,999</text>
+        <text x="280" y="144" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF" fill-opacity="0.4">/ traveler</text>
+      </g>
+
+      <!-- Secondary Mini Card -->
+      <g transform="translate(24, 596)">
+        <rect width="404" height="160" rx="24" fill="#0F1B28" stroke="#FFFFFF" stroke-opacity="0.08" />
+        <text x="24" y="44" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#FFFFFF">Why Travelers Trust Alpinex</text>
+        <text x="24" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#FFFFFF" fill-opacity="0.65">✓ 100% Transparent Fleet Tariff Billing</text>
+        <text x="24" y="98" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#FFFFFF" fill-opacity="0.65">✓ Military Vetted Hill Driving Academy</text>
+        <text x="24" y="122" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#FFFFFF" fill-opacity="0.65">✓ 24/7 Operations Room Tracking</text>
+      </g>
+
+      <!-- NATIVE FLOATING BOTTOM APP DOCK (Matching Our Actual Code!) -->
+      <g transform="translate(20, 810)" filter="url(#badge_shadow)">
+        <rect width="412" height="74" rx="28" fill="#0B1520" fill-opacity="0.95" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="1.5" />
+        
+        <!-- Tab 1: Explore -->
+        <circle cx="52" cy="32" r="10" stroke="#FF5B37" stroke-width="2" fill="none" />
+        <circle cx="52" cy="32" r="3" fill="#FF5B37" />
+        <text x="52" y="56" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF">Explore</text>
+
+        <!-- Tab 2: Trips -->
+        <polygon points="132,24 140,40 124,40" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="2" fill="none" />
+        <text x="132" y="56" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF" fill-opacity="0.6">Trips</text>
+
+        <!-- Center Glowing [PLAN] Button -->
+        <rect x="178" y="10" width="56" height="54" rx="20" fill="url(#orange_grad)" filter="url(#glow_brand)" />
+        <polygon points="206,24 210,32 218,34 212,39 214,46 206,42 198,46 200,39 194,34 202,32" fill="#FFFFFF" />
+        <text x="206" y="56" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" font-weight="900" fill="#FFFFFF">PLAN</text>
+
+        <!-- Tab 4: Tariff -->
+        <circle cx="280" cy="32" r="9" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="2" fill="none" />
+        <text x="280" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" fill-opacity="0.6">₹</text>
+        <text x="280" y="56" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF" fill-opacity="0.6">Tariff</text>
+
+        <!-- Tab 5: More (Drawer) -->
+        <line x1="350" y1="27" x2="368" y2="27" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" />
+        <line x1="350" y1="33" x2="368" y2="33" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" />
+        <line x1="350" y1="39" x2="368" y2="39" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" />
+        <text x="359" y="56" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF" fill-opacity="0.6">More</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- 4. FLOATING FEATURE PILLS AROUND PHONE (High Visual Engagement) -->
+  <!-- Floating Pill Left: Native App Dock -->
+  <g transform="translate(60, 880)" filter="url(#badge_shadow)">
+    <rect width="210" height="66" rx="20" fill="#0B1520" fill-opacity="0.9" stroke="#34E0A1" stroke-opacity="0.4" stroke-width="1.5" />
+    <circle cx="36" cy="33" r="16" fill="#34E0A1" fill-opacity="0.15" />
+    <circle cx="36" cy="33" r="6" fill="#34E0A1" />
+    <text x="64" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">Mobile App Dock</text>
+    <text x="64" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#34E0A1">iOS Native Feel</text>
+  </g>
+
+  <!-- Floating Pill Right: 1-Click WhatsApp -->
+  <g transform="translate(810, 720)" filter="url(#badge_shadow)">
+    <rect width="210" height="66" rx="20" fill="#0B1520" fill-opacity="0.9" stroke="#FF5B37" stroke-opacity="0.4" stroke-width="1.5" />
+    <circle cx="36" cy="33" r="16" fill="#FF5B37" fill-opacity="0.15" />
+    <circle cx="36" cy="33" r="6" fill="#FF5B37" />
+    <text x="64" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">WhatsApp Quotes</text>
+    <text x="64" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#FFA07A">Instant Lead CRM</text>
+  </g>
+
+  <!-- Floating Pill Left Bottom: Strictly Typed -->
+  <g transform="translate(60, 1140)" filter="url(#badge_shadow)">
+    <rect width="210" height="66" rx="20" fill="#0B1520" fill-opacity="0.9" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1.5" />
+    <circle cx="36" cy="33" r="16" fill="#FFFFFF" fill-opacity="0.1" />
+    <text x="36" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="900" fill="#FFFFFF">TS</text>
+    <text x="64" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">100% TypeScript</text>
+    <text x="64" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#FFFFFF" fill-opacity="0.6">Zero Errors</text>
+  </g>
+
+  <!-- 5. BOTTOM CALL TO ACTION (Inside & Below Safe Zone) -->
+  <g transform="translate(540, 1580)">
+    <!-- Big Glowing CTA Button -->
+    <g filter="url(#glow_brand)">
+      <rect x="-320" y="-45" width="640" height="90" rx="45" fill="url(#orange_grad)" />
+    </g>
+    <text x="0" y="8" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" letter-spacing="3" fill="#FFFFFF">
+      ALPINEX™ • 50% OFF
+    </text>
+  </g>
+
+  <!-- Subtitle Explainer & Link Notice -->
+  <text x="540" y="1710" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" letter-spacing="1" fill="#FFFFFF">
+    Ultra-Luxury Travel Agency Next.js 16 Starter Kit
+  </text>
+  <text x="540" y="1750" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" letter-spacing="2" fill="#34E0A1">
+    👉 LINK IN BIO • GET FULL SOURCE CODE
+  </text>
+
+  <!-- Subtle Instagram Grid Safe Zone Indicators (Optional aesthetic border) -->
+  <rect x="0" y="420" width="1080" height="1080" stroke="#FFFFFF" stroke-opacity="0.04" stroke-width="2" stroke-dasharray="10 10" fill="none" />
+</svg>
